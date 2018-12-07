@@ -61,7 +61,7 @@ public class GoLTest {
 
 	@Test
 	public void afterTickThereIsNoLife() {
-		aBoard("-");
+		aBoard("X");
 		thatIsTicked();
 		resultsIn("-"); //
 	}
