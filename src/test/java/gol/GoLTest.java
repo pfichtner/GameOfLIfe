@@ -69,9 +69,8 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		this.board.setLifeCells(IntStream.range(0, board.getHeight())
-				.mapToObj(y -> IntStream.range(0, board.getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
-				.filter(this::alifeInNextGen).collect(toSet()));
+		board.tick();
+		
 	}
 
 	private boolean alifeInNextGen(Point point) {
