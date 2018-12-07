@@ -89,8 +89,9 @@ public class GoLTest {
 		points.filter(point -> {
 			boolean alife = isLifeAt(x, y);
 			if (alife && alifeNeighbours(point) == 3) {
-				nextGen.add(point);
+				return true;
 			}
+			return false;
 		});
 
 		IntStream.range(0, height).forEach(y -> {
