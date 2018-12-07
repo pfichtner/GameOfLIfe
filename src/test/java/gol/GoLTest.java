@@ -73,17 +73,6 @@ public class GoLTest {
 		
 	}
 
-	private boolean alifeInNextGen(Point point) {
-		boolean alife = isLifeAt(point);
-		return alife && alifeNeighbours(point) == 3;
-	}
-
-	private long alifeNeighbours(Point thisPoint) {
-		return range(thisPoint.y - 1, thisPoint.y + 2)
-				.mapToObj(y -> range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
-				.flatMap(identity()).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
-	}
-
 	private boolean isLifeAt(Point point) {
 		return isLifeAt(point.x, point.y);
 	}
