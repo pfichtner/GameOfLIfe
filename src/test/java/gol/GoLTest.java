@@ -3,6 +3,8 @@ package gol;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.stream.IntStream;
+
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
@@ -52,6 +54,9 @@ public class GoLTest {
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
+		
+		IntStream.range(0, board.getHeight()).mapToObj(y->IntStream.range(0, board.getWidth()))
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
