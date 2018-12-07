@@ -97,6 +97,7 @@ public class GoLTest {
 			private String actual(Board board) {
 				return range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
 			}
+
 		};
 	}
 
