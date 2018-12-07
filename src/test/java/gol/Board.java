@@ -66,17 +66,17 @@ public class Board {
 	}
 
 	private boolean alifeInNextGen(Point point) {
-		boolean alife = isLifeAt(point);
+		boolean alife = isAlive(point);
 		long alifeNeighbours = alifeNeighbours(point);
 		return alife && (alifeNeighbours == 2 || alifeNeighbours == 3) //
 				|| !alife && (alifeNeighbours == 3);
 	}
 
 	private long alifeNeighbours(Point point) {
-		return point.neighbours().filter(isEqual(point).negate()).filter(this::isLifeAt).count();
+		return point.neighbours().filter(isEqual(point).negate()).filter(this::isAlive).count();
 	}
 
-	private boolean isLifeAt(Point point) {
+	private boolean isAlive(Point point) {
 		return isLifeAt(point.x, point.y);
 	}
 
