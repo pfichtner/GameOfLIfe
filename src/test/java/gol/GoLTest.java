@@ -92,10 +92,6 @@ public class GoLTest {
 			}
 		}
 
-		withLifeAt(0, 0);
-		withLifeAt(0, 1);
-		withLifeAt(1, 0);
-		withLifeAt(1, 1);
 	}
 
 	private void whenTicked() {
