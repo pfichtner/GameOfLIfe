@@ -61,6 +61,7 @@ public class GoLTest {
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
+		String expected = Stream.of(rows).collect(joining("\n"));
 		return new TypeSafeMatcher<Board>() {
 
 			@Override
@@ -71,8 +72,8 @@ public class GoLTest {
 
 			@Override
 			public boolean matchesSafely(Board board) {
-				return range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"))
-						.equals(Stream.of(rows).collect(joining("\n")));
+				String actual = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+				return actual.equals(expected);
 			}
 		};
 	}
