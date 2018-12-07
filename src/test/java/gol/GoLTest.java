@@ -11,8 +11,6 @@ import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
-import gol.GoLTest.BoardMatcher;
-
 public class GoLTest {
 
 	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
