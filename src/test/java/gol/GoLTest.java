@@ -35,10 +35,10 @@ public class GoLTest {
 		}
 
 		private String actual(Board board) {
-			return range(0, board.getHeight()).mapToObj(y -> row(y, board)).collect(joining("\n"));
+			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 		}
 
-		private String row(int y, Board board) {
+		private String row(Board board, int y) {
 			Stream<String> s = range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
 			return s.collect(Collectors.joining());
 		}
