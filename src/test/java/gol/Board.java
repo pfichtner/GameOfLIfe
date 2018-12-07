@@ -3,8 +3,6 @@ package gol;
 import java.util.HashSet;
 import java.util.Set;
 
-import gol.GoLTest.Point;
-
 public class Board {
 
 	private static class Point {
