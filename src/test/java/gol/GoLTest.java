@@ -28,15 +28,15 @@ public class GoLTest {
 
 		@Override
 		public boolean matchesSafely(Board board) {
-			return dump(board).equals(expected);
+			return actual(board).equals(expected);
 		}
 		
 		@Override
 		protected void describeMismatchSafely(Board board, Description description) {
-			description.appendText(dump(board));
+			description.appendText(actual(board));
 		}
 
-		private String dump(Board board) {
+		private String actual(Board board) {
 			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 		}
 
