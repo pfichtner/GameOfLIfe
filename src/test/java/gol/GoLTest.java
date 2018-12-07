@@ -1,15 +1,12 @@
 package gol;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
-
-import gol.GoLTest.Point;
 
 public class GoLTest {
 
