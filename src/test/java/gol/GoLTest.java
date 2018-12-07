@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -97,7 +98,7 @@ public class GoLTest {
 	private long alifeNeighbours(Point thisPoint) {
 		return range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
-				.flatMap(identity()).filter(p -> !thisPoint.equals(p)).filter(this::isLifeAt).count();
+				.flatMap(identity()).filter(Predicate.isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
 	}
 
 	private boolean isLifeAt(Point point) {
