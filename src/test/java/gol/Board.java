@@ -84,7 +84,7 @@ public class Board {
 	}
 
 	private boolean isLifeAt(int x, int y) {
-		return board.getLifeCells().contains(point(x, y));
+		return getLifeCells().contains(point(x, y));
 	}
 
 	private Point point(int x, int y) {
