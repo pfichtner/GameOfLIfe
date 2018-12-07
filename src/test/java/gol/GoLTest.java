@@ -30,6 +30,12 @@ public class GoLTest {
 		public boolean matchesSafely(Board board) {
 			return actual(board).equals(expected);
 		}
+		
+		@Override
+		protected void describeMismatchSafely(Board item, Description mismatchDescription) {
+			// TODO Auto-generated method stub
+			super.describeMismatchSafely(item, mismatchDescription);
+		}
 
 		private String actual(Board board) {
 			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
