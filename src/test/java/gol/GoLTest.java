@@ -110,7 +110,7 @@ public class GoLTest {
 		)));
 	}
 
-	private org.hamcrest.TypeSafeMatcher<Board> board(String... rows) {
+	private TypeSafeMatcher<Board> board(String... rows) {
 		return new BoardMatcher(rows);
 	}
 
