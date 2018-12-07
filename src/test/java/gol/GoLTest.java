@@ -23,7 +23,7 @@ public class GoLTest {
 
 		@Override
 		public void describeTo(Description description) {
-			description.appendText(expected);
+			description.appendText("\n" + expected);
 		}
 
 		@Override
