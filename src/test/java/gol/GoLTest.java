@@ -85,9 +85,8 @@ public class GoLTest {
 		return new TypeSafeMatcher<Board>() {
 
 			@Override
-			public void describeTo(Description arg0) {
-				// TODO Auto-generated method stub
-
+			public void describeTo(Description description) {
+				description.appendDescriptionOf(expected);
 			}
 
 			@Override
