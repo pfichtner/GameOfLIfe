@@ -41,7 +41,7 @@ public class GoLTest {
 		}
 
 		private String row(Board board, int y) {
-			return range(0, board.getWidth()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : "-").collect(joining());
+			return range(0, board.getWidth()).mapToObj(x -> board.isAlive(x, y) ? "X" : "-").collect(joining());
 		}
 	}
 
@@ -128,7 +128,7 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int x, int y) {
-		return board.isLifeAt(x, y);
+		return board.isAlive(x, y);
 	}
 
 	private void thatIsTicked() {
