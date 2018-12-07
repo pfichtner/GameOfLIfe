@@ -7,17 +7,13 @@ import org.junit.Test;
 
 public class GoLTest {
 
-	private Board board = new Board();
+	private Board board ;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
 		aNewBoard(1, 1);
 		withLifeAt(0, 0);
 		assertThat(isLifeAt(0, 0), is(true));
-	}
-
-	private boolean isLifeAt(int x, int y) {
-		return board.isLifeAt(x, y);
 	}
 
 	@Test
@@ -61,6 +57,10 @@ public class GoLTest {
 
 	}
 
+	private boolean isLifeAt(int x, int y) {
+		return board.isLifeAt(x, y);
+	}
+
 	private void whenTicked() {
 		board.tick();
 
@@ -71,8 +71,7 @@ public class GoLTest {
 	}
 
 	private void aNewBoard(int width, int height) {
-		this.board.setWidth(width);
-		this.board.setHeight(height);
+		this.board = new Board(width,height);
 	}
 
 }
