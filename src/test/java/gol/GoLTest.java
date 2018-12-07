@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -86,23 +87,15 @@ public class GoLTest {
 		IntStream yr = IntStream.range(0, height);
 		Stream<Stream<Point>> mapToObj = yr.mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y)));
 		Stream<Point> points = mapToObj.flatMap(identity());
-		points.filter(point -> {
+		Stream<Point> filter = points.filter(point -> {
 			boolean alife = isLifeAt(point);
 			if (alife && alifeNeighbours(point) == 3) {
 				return true;
 			}
 			return false;
 		});
+		Set<Point> nextGen = filter.collect(Collectors.toSet());
 
-		IntStream.range(0, height).forEach(y -> {
-			IntStream.range(0, height).forEach(x -> {
-				Point point = new Point(x, y);
-				boolean alife = isLifeAt(x, y);
-				if (alife && alifeNeighbours(point) == 3) {
-					nextGen.add(point);
-				}
-			});
-		});
 
 		this.lifeCells = nextGen;
 	}
