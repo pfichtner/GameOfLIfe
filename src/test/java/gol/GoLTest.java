@@ -16,8 +16,8 @@ public class GoLTest {
 		assertThat(isLifeAt(0, 0), is(true));
 	}
 
-	private Object isLifeAt(int x, int y) {
-		return board.isLifeAt(x,y);
+	private boolean isLifeAt(int x, int y) {
+		return board.isLifeAt(x, y);
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class GoLTest {
 	}
 
 	private void withLifeAt(int x, int y) {
-		this.board.setAlive(x,y);
+		this.board.setAlive(x, y);
 	}
 
 	private void aNewBoard(int width, int height) {
