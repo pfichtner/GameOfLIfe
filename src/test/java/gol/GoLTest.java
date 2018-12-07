@@ -6,7 +6,9 @@ import static org.junit.Assert.assertThat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -93,8 +95,9 @@ public class GoLTest {
 	private int alifeNeighbours(Point thisPoint) {
 		AtomicInteger count = new AtomicInteger();
 
-		IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
+		Stream<Stream<Point>> mapToObj = IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)));
+		Stream<Point> points = mapToObj.flatMap(Function.identity());
 
 		IntStream.range(thisPoint.y - 1, thisPoint.y + 2).forEach(y -> {
 			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
