@@ -1,5 +1,6 @@
 package gol;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import org.hamcrest.CoreMatchers;
@@ -15,15 +16,15 @@ public class GoLTest {
 
 	}
 
-	private void hasLifeAt(int i, int j) {
-		assertThat(isLifeAt(i, j), CoreMatchers.is(true));
+	private void hasLifeAt(int x, int y) {
+		assertThat(isLifeAt(x, y), is(true));
 	}
 
-	private boolean isLifeAt(int i, int j) {
+	private boolean isLifeAt(int x, int y) {
 		return true;
 	}
 
-	private void withLifeAt(int i, int j) {
+	private void withLifeAt(int x, int y) {
 		// TODO Auto-generated method stub
 
 	}
