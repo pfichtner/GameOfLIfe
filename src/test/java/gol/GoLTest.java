@@ -53,11 +53,6 @@ public class GoLTest {
 				"XX", //
 				"XX" //
 		)));
-
-		assertThat(isLifeAt(0, 0), is(true));
-		assertThat(isLifeAt(0, 1), is(true));
-		assertThat(isLifeAt(1, 0), is(true));
-		assertThat(isLifeAt(1, 1), is(true));
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
