@@ -7,7 +7,6 @@ import static java.util.stream.IntStream.range;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.IntStream;
 
 public class Board {
 
