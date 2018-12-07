@@ -86,10 +86,14 @@ public class GoLTest {
 		Stream<Stream<Point>> mapToObj = yr.mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y)));
 		Stream<Point> points = mapToObj.flatMap(identity());
 		Stream<Point> filter = points.filter(point -> {
-			boolean alife = isLifeAt(point);
-			return alife && alifeNeighbours(point) == 3;
+			return alifeInNextGen(point);
 		});
 		this.lifeCells = filter.collect(Collectors.toSet());
+	}
+
+	private boolean alifeInNextGen(Point point) {
+		boolean alife = isLifeAt(point);
+		return alife && alifeNeighbours(point) == 3;
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
