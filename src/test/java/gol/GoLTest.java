@@ -88,10 +88,7 @@ public class GoLTest {
 		Stream<Point> filter = points.filter(point -> {
 			boolean alife = isLifeAt(point);
 			boolean b = alife && alifeNeighbours(point) == 3;
-			if (b) {
-				return b;
-			} else
-				return b;
+			return b;
 		});
 		this.lifeCells = filter.collect(Collectors.toSet());
 	}
