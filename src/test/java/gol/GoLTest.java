@@ -85,7 +85,7 @@ public class GoLTest {
 		);
 		whenTicked();
 		assertThat(board, is(board( //
-				"X ", //
+				"XX", //
 				"XX" //
 		)));
 	}
