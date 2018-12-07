@@ -16,27 +16,7 @@ import gol.GoLTest.Point;
 
 public class GoLTest {
 
-	private static class Point {
-
-		private int x, y;
-
-		public Point(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-
-		@Override
-		public int hashCode() {
-			return 31 * x + y;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			Point other = (Point) obj;
-			return other.x == x && other.y == y;
-		}
-
-	}
+	
 
 	private Board board = new Board();
 
