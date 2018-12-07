@@ -33,6 +33,8 @@ public class GoLTest {
 	}
 
 	private Set<Point> lifeCells = new HashSet<Point>();
+	private int width;
+	private int height;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
@@ -88,8 +90,8 @@ public class GoLTest {
 	}
 
 	private void aNewBoard(int width, int height) {
-		// TODO Auto-generated method stub
-
+		this.width = width;
+		this.height = height;
 	}
 
 }
