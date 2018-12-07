@@ -90,14 +90,14 @@ public class GoLTest {
 				"--X" //
 		);
 		thatIsTicked();
-		resultsIn();
+		resultsIn("---", //
+				"-X-", //
+				"---");
 	}
 
-	private void resultsIn() {
+	private void resultsIn(String... rows) {
 		assertThat(board, is(board( //
-				"---", //
-				"-X-", //
-				"---" //
+				rows //
 		)));
 	}
 
