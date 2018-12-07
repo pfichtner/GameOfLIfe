@@ -67,6 +67,19 @@ public class GoLTest {
 		)));
 	}
 
+	@Test
+	public void newLifeIsBorn() {
+		aBoard( //
+				"XXX", //
+				"   " //
+		);
+		whenTicked();
+		assertThat(board, is(board( //
+				" X ", //
+				" X " //
+		)));
+	}
+
 	private TypeSafeMatcher<Board> board(String... rows) {
 		String expected = Stream.of(rows).collect(joining("\n"));
 		return new TypeSafeMatcher<Board>() {
