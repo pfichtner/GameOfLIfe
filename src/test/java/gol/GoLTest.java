@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Point;
+import java.util.function.IntFunction;
 import java.util.stream.Stream;
 
 import org.junit.Test;
@@ -59,11 +60,15 @@ public class GoLTest {
 	private TypeSafeMatcher<Board> board(String... rows) {
 
 		Stream<String> poStream = range(0, board.getHeight())
-				.mapToObj(y -> range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " "))
+				.mapToObj(r())
 				.flatMap(identity());
 
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	private IntFunction<? extends Stream<String>> r() {
+		return y -> range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
 	}
 
 	private void aBoard(String... rows) {
