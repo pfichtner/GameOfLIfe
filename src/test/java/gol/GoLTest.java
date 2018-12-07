@@ -88,7 +88,7 @@ public class GoLTest {
 			String row = rows[y];
 			char[] charArray = row.toCharArray();
 			for (int x = 0; x < charArray.length; x++) {
-
+				withLifeAt(x, y);
 			}
 		}
 
