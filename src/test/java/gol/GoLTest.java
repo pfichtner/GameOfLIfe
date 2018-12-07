@@ -98,13 +98,15 @@ public class GoLTest {
 	@Test
 	public void newLifeIsBorn() {
 		aBoard( //
-				"XXX", //
-				"---" //
+				"X-X", //
+				"---", //
+				"-X-" //
 		);
 		thatIsTicked();
 		assertThat(board, is(board( //
+				"---", //
 				"-X-", //
-				"-X-" //
+				"---" //
 		)));
 	}
 
