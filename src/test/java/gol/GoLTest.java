@@ -19,7 +19,11 @@ public class GoLTest {
 	public void whereNoLifeIsSetThereIsNoLife() {
 		aNewBoard(1, 2);
 		withLifeAt(0, 1);
-		hasLifeAt(0, 0);
+		hasNoLifeAt(0, 0);
+	}
+
+	private void hasNoLifeAt(int x, int y) {
+		assertThat(isLifeAt(x, y), is(false));
 	}
 
 	private void hasLifeAt(int x, int y) {
