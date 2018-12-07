@@ -84,12 +84,12 @@ public class Board {
 		return lifeCells.contains(point(x, y));
 	}
 
-	private Point point(int x, int y) {
-		return new Point(x, y);
-	}
-
 	public void setAlive(int x, int y) {
 		lifeCells.add(point(x, y));
+	}
+
+	private Point point(int x, int y) {
+		return new Point(x, y);
 	}
 
 }
