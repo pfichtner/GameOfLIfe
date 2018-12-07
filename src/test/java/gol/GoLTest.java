@@ -76,7 +76,7 @@ public class GoLTest {
 				"XX" //
 		);
 		thatIsTicked();
-		assertThat(board, is(board( //
+		resultsIn( //
 				"XX", //
 				"XX" //
 		)));
