@@ -7,7 +7,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class GoLTest {
-	
+
 	private boolean[] cells = new boolean[2];
 
 	@Test
@@ -38,7 +38,6 @@ public class GoLTest {
 
 	private void withLifeAt(int x, int y) {
 		this.cells[x] = true;
-
 	}
 
 	private void aNewBoard(int width, int height) {
