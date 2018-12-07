@@ -31,10 +31,6 @@ public class GoLTest {
 			return actual(board).equals(expected);
 		}
 
-		@Override
-		public void describeMismatch(Object item, Description mismatchDescription) {
-		}
-
 		private String actual(Board board) {
 			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 		}
