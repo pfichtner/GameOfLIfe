@@ -78,8 +78,7 @@ public class GoLTest {
 		thatIsTicked();
 		resultsIn( //
 				"XX", //
-				"XX" //
-		)));
+				"XX"); //
 	}
 
 	@Test
