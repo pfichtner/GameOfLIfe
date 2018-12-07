@@ -3,8 +3,6 @@ package gol;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.awt.Point;
-
 import org.junit.Test;
 
 public class GoLTest {
@@ -66,10 +64,6 @@ public class GoLTest {
 
 	private void withLifeAt(int x, int y) {
 		this.board.setAlive(x,y);
-	}
-
-	private Point point(int x, int y) {
-		return new Point(x, y);
 	}
 
 	private void aNewBoard(int width, int height) {
