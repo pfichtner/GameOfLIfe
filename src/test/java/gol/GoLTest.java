@@ -13,7 +13,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 
 public class GoLTest {
 
-	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
+	private static final class BoardMatcher extends org.hamcrest.TypeSafeMatcher<Board> {
 
 		private final String expected;
 
@@ -103,7 +103,7 @@ public class GoLTest {
 		)));
 	}
 
-	private TypeSafeMatcher<Board> board(String... rows) {
+	private org.hamcrest.TypeSafeMatcher<Board> board(String... rows) {
 		return new BoardMatcher(rows);
 	}
 
