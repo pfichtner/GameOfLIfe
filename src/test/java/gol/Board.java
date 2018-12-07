@@ -32,8 +32,7 @@ public class Board {
 		}
 
 		Stream<Point> neighbours() {
-			return range(y - 1, y + 2)
-					.mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> new Point(x, y)))
+			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> new Point(x, y)))
 					.flatMap(identity());
 		}
 
@@ -48,10 +47,6 @@ public class Board {
 		this.height = height;
 	}
 
-	public Set<Point> getLifeCells() {
-		return lifeCells;
-	}
-
 	public int getWidth() {
 		return width;
 	}
@@ -61,9 +56,13 @@ public class Board {
 	}
 
 	public void tick() {
-		this.lifeCells = range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> new Point(x, y)))
-				.flatMap(identity()).filter(this::alifeInNextGen).collect(toSet());
+		this.lifeCells = cells().filter(this::alifeInNextGen).collect(toSet());
 
+	}
+
+	private Stream<Point> cells() {
+		return range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> new Point(x, y)))
+				.flatMap(identity());
 	}
 
 	private boolean alifeInNextGen(Point point) {
@@ -82,7 +81,7 @@ public class Board {
 	}
 
 	boolean isLifeAt(int x, int y) {
-		return getLifeCells().contains(point(x, y));
+		return lifeCells.contains(point(x, y));
 	}
 
 	private Point point(int x, int y) {
