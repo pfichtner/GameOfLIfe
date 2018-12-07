@@ -1,14 +1,10 @@
 package gol;
 
-import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.awt.Point;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.hamcrest.Description;
