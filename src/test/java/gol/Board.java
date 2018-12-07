@@ -61,7 +61,7 @@ public class Board {
 
 	private boolean alifeInNextGen(Point point) {
 		boolean alife = isLifeAt(point);
-		return alife && alifeNeighbours(point) == 3;
+		return alife && (alifeNeighbours(point) == 2 || alifeNeighbours(point) == 3);
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
