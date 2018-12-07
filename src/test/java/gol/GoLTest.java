@@ -20,7 +20,7 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int i, int j) {
-		return false;
+		return true;
 	}
 
 	private void withLifeAt(int i, int j) {
