@@ -65,7 +65,7 @@ public class GoLTest {
 	public void afterTickThereIsNoLife() {
 		aNewBoard(1, 1);
 		withLifeAt(0, 0);
-		whenTicked();
+		thatIsTicked();
 		assertThat(isLifeAt(0, 0), is(false));
 	}
 
@@ -75,7 +75,7 @@ public class GoLTest {
 				"XX", //
 				"XX" //
 		);
-		whenTicked();
+		thatIsTicked();
 		assertThat(board, is(board( //
 				"XX", //
 				"XX" //
@@ -89,7 +89,7 @@ public class GoLTest {
 				"-X-", //
 				"--X" //
 		);
-		whenTicked();
+		thatIsTicked();
 		assertThat(board, is(board( //
 				"---", //
 				"-X-", //
@@ -103,7 +103,7 @@ public class GoLTest {
 				"XXX", //
 				"---" //
 		);
-		whenTicked();
+		thatIsTicked();
 		assertThat(board, is(board( //
 				"-X-", //
 				"-X-" //
@@ -131,7 +131,7 @@ public class GoLTest {
 		return board.isLifeAt(x, y);
 	}
 
-	private void whenTicked() {
+	private void thatIsTicked() {
 		board.tick();
 
 	}
