@@ -93,11 +93,9 @@ public class GoLTest {
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
-		Stream<Point> filter2 = IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
+		return IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
-				.flatMap(Function.identity()).filter(p -> !thisPoint.equals(p)).filter(p -> isLifeAt(p));
-
-		return filter2.count();
+				.flatMap(Function.identity()).filter(p -> !thisPoint.equals(p)).filter(p -> isLifeAt(p)).count();
 	}
 
 	private boolean isLifeAt(Point point) {
