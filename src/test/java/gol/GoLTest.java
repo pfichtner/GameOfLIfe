@@ -58,7 +58,7 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int x, int y) {
-		return this.cells[x];
+		return this.lifeCells.contains(new Point(x, y));
 	}
 
 	private void withLifeAt(int x, int y) {
