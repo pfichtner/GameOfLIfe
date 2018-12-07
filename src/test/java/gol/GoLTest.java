@@ -1,6 +1,7 @@
 package gol;
 
 import static java.util.function.Function.identity;
+import static java.util.function.Predicate.isEqual;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -98,7 +99,7 @@ public class GoLTest {
 	private long alifeNeighbours(Point thisPoint) {
 		return range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
-				.flatMap(identity()).filter(Predicate.isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
+				.flatMap(identity()).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
 	}
 
 	private boolean isLifeAt(Point point) {
