@@ -17,7 +17,6 @@ public class GoLTest {
 
 	private void hasLifeAt(int i, int j) {
 		assertThat(isLifeAt(i, j), CoreMatchers.is(true));
-
 	}
 
 	private boolean isLifeAt(int i, int j) {
