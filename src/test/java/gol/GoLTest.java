@@ -61,6 +61,7 @@ public class GoLTest {
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
+		String expected = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
 		return new TypeSafeMatcher<Board>() {
 
 			@Override
@@ -71,7 +72,7 @@ public class GoLTest {
 
 			@Override
 			public boolean matchesSafely(Board board) {
-				String expected = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+				String actual = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
 				// TODO Auto-generated method stub
 				return false;
 			}
