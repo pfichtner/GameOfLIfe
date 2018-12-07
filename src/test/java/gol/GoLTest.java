@@ -83,8 +83,9 @@ public class GoLTest {
 	private void whenTicked() {
 		Set<Point> nextGen = new HashSet<Point>();
 
-		IntStream.range(0, height).mapToObj(y -> IntStream.range(0, height).mapToObj(new Point(x, y)));
-
+		IntStream yr = IntStream.range(0, height);
+		yr.mapToObj(y-IntStream.range(0, height));
+		
 		IntStream.range(0, height).forEach(y -> {
 			IntStream.range(0, height).forEach(x -> {
 				Point point = new Point(x, y);
