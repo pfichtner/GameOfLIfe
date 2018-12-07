@@ -96,9 +96,7 @@ public class GoLTest {
 	}
 
 	private void resultsIn(String... rows) {
-		assertThat(board, is(board( //
-				rows //
-		)));
+		assertThat(board, is(board(rows)));
 	}
 
 	@Test
