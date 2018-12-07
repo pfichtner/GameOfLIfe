@@ -54,6 +54,19 @@ public class GoLTest {
 		)));
 	}
 
+	@Test
+	public void cellsWithTwoNeighboursWillSurvive() {
+		aBoard( //
+				"X ", //
+				"XX" //
+		);
+		whenTicked();
+		assertThat(board, is(board( //
+				"  ", //
+				"X " //
+		)));
+	}
+
 	private TypeSafeMatcher<Board> board(String... rows) {
 		String expected = Stream.of(rows).collect(joining("\n"));
 		return new TypeSafeMatcher<Board>() {
