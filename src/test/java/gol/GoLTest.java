@@ -70,7 +70,7 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aBoard();
+		aBoard("XX");
 		whenTicked();
 		assertThat(isLifeAt(0, 0), is(true));
 		assertThat(isLifeAt(0, 1), is(true));
@@ -78,7 +78,7 @@ public class GoLTest {
 		assertThat(isLifeAt(1, 1), is(true));
 	}
 
-	private void aBoard() {
+	private void aBoard(String layout) {
 		aNewBoard(2, 2);
 		withLifeAt(0, 0);
 		withLifeAt(0, 1);
