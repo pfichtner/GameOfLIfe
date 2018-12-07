@@ -31,7 +31,7 @@ public class GoLTest {
 			return actual(board).equals(expected);
 		}
 
-		void describeMismatch(Object item, Description mismatchDescription) {
+		public void describeMismatch(Object item, Description mismatchDescription) {
 		}
 
 		private String actual(Board board) {
