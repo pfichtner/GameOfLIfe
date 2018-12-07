@@ -38,7 +38,7 @@ public class GoLTest {
 
 	}
 
-	private Board board = new Board(new HashSet<Point>());
+	private Board board = new Board();
 
 	@Test
 	public void canCreateBoardAndSetLife() {
