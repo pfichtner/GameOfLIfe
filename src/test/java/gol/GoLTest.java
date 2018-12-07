@@ -92,8 +92,7 @@ public class GoLTest {
 
 			@Override
 			public boolean matchesSafely(Board board) {
-				String actual = actual(board);
-				return actual.equals(expected);
+				return actual(board).equals(expected);
 			}
 
 			private String actual(Board board) {
