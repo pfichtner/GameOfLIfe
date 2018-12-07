@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -92,6 +93,9 @@ public class GoLTest {
 
 	private int alifeNeighbours(Point thisPoint) {
 		AtomicInteger count = new AtomicInteger();
+
+		Stream<IntStream> mapToObj = IntStream.range(thisPoint.y - 1, thisPoint.y + 2).mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2));
+
 		IntStream.range(thisPoint.y - 1, thisPoint.y + 2).forEach(y -> {
 			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
 				Point point = new Point(x, y);
