@@ -46,7 +46,7 @@ public class Board {
 		return lifeCells;
 	}
 
-	public void setLifeCells(Set<Point> lifeCells) {
+	private void setLifeCells(Set<Point> lifeCells) {
 		this.lifeCells = lifeCells;
 	}
 
