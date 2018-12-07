@@ -14,6 +14,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 public class GoLTest {
 
 	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
+
 		private final String expected;
 
 		private BoardMatcher(String[] rows) {
@@ -29,7 +30,7 @@ public class GoLTest {
 		public boolean matchesSafely(Board board) {
 			return actual(board).equals(expected);
 		}
-		
+
 		private String actual(Board board) {
 			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 		}
