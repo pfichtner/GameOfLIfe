@@ -71,7 +71,8 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		this.lifeCells = new HashSet<Point>();
+		HashSet<Point> nextGen = new HashSet<Point>();
+		this.lifeCells = nextGen;
 	}
 
 	private boolean isLifeAt(int x, int y) {
