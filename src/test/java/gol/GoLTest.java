@@ -82,8 +82,7 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		Stream<Point> points = IntStream.range(0, height).mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y))).flatMap(identity());
-		Stream<Point> filter = points.filter(this::alifeInNextGen);
+		Stream<Point> filter = IntStream.range(0, height).mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y))).flatMap(identity()).filter(this::alifeInNextGen);
 		this.lifeCells = filter.collect(Collectors.toSet());
 	}
 
