@@ -86,7 +86,7 @@ public class GoLTest {
 
 			@Override
 			public void describeTo(Description description) {
-				description.appendDescriptionOf(expected);
+				description.appendText(expected);
 			}
 
 			@Override
