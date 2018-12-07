@@ -87,4 +87,8 @@ public class Board {
 		return board.getLifeCells().contains(point(x, y));
 	}
 
+	private Point point(int x, int y) {
+		return new Point(x, y);
+	}
+
 }
