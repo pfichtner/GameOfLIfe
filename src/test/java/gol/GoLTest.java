@@ -55,7 +55,7 @@ public class GoLTest {
 
 	private TypeSafeMatcher<Board> board(String... rows) {
 		
-		IntStream.range(0, board.getHeight()).mapToObj(y->IntStream.range(0, board.getWidth()));
+		IntStream.range(0, board.getHeight()).mapToObj(y->IntStream.range(0, board.getWidth()).mapToObj(new Point(x,y)));
 		
 		// TODO Auto-generated method stub
 		return null;
