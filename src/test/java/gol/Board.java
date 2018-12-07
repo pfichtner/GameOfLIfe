@@ -84,7 +84,6 @@ public class Board {
 		return lifeCells.contains(point);
 	}
 
-
 	public void setAlive(int x, int y) {
 		lifeCells.add(point(x, y));
 	}
