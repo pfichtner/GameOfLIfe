@@ -17,7 +17,7 @@ public class GoLTest {
 
 		private final String expected;
 
-		private BoardMatcher(String[] rows) {
+		private BoardMatcher(String... rows) {
 			expected = Stream.of(rows).collect(joining("\n"));
 		}
 
