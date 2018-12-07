@@ -70,16 +70,20 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aNewBoard(2, 2);
-		withLifeAt(0, 0);
-		withLifeAt(0, 1);
-		withLifeAt(1, 0);
-		withLifeAt(1, 1);
+		aBoard();
 		whenTicked();
 		assertThat(isLifeAt(0, 0), is(true));
 		assertThat(isLifeAt(0, 1), is(true));
 		assertThat(isLifeAt(1, 0), is(true));
 		assertThat(isLifeAt(1, 1), is(true));
+	}
+
+	private void aBoard() {
+		aNewBoard(2, 2);
+		withLifeAt(0, 0);
+		withLifeAt(0, 1);
+		withLifeAt(1, 0);
+		withLifeAt(1, 1);
 	}
 
 	private void whenTicked() {
