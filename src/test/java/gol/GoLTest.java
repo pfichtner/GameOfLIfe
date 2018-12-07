@@ -16,6 +16,10 @@ public class GoLTest {
 		assertThat(isLifeAt(0, 0), is(true));
 	}
 
+	private Object isLifeAt(int i, int j) {
+		return board.isLifeAt(i,j);
+	}
+
 	@Test
 	public void whereNoLifeIsSetThereIsNoLife() {
 		aNewBoard(2, 1);
