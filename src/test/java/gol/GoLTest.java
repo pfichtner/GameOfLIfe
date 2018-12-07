@@ -65,7 +65,7 @@ public class GoLTest {
 	}
 
 	private void withLifeAt(int x, int y) {
-		this.board.getLifeCells().add(point(x, y));
+		this.board.setAlive(x,y);
 	}
 
 	private Point point(int x, int y) {
