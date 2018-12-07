@@ -89,6 +89,11 @@ public class GoLTest {
 		this.lifeCells = nextGen;
 	}
 
+	private int alifeNeighbours(Point point) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	private boolean isLifeAt(int x, int y) {
 		return this.lifeCells.contains(point(x, y));
 	}
