@@ -33,11 +33,11 @@ public class GoLTest {
 
 		@Override
 		protected void describeMismatchSafely(Board board, Description description) {
-			description.appendText(actual(board));
+			description.appendText("\n" + actual(board));
 		}
 
 		private String actual(Board board) {
-			return "\n" + range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
+			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 		}
 
 		private String row(Board board, int y) {
