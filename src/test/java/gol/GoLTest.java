@@ -92,11 +92,13 @@ public class GoLTest {
 
 	private int alifeNeighbours(Point point) {
 		AtomicInteger count = new AtomicInteger();
-		IntStream.range(point.y-1, point.y+2).forEach(y -> {
-			IntStream.range(point.x-1, point.x+2).forEach(x -> {
-				boolean lifeAt = isLifeAt(x, y);
-				if (lifeAt)
-					count.incrementAndGet();
+		IntStream.range(point.y - 1, point.y + 2).forEach(y -> {
+			IntStream.range(point.x - 1, point.x + 2).forEach(x -> {
+				if (point.x != x || point.y != y) {
+					boolean lifeAt = isLifeAt(x, y);
+					if (lifeAt)
+						count.incrementAndGet();
+				}
 			});
 		});
 		return count.get();
