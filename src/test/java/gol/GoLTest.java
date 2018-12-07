@@ -80,6 +80,9 @@ public class GoLTest {
 			IntStream.range(0, height).forEach(x -> {
 				Point point = new Point(x, y);
 				boolean alife = isLifeAt(x, y);
+				if (alife && alifeNeighbours(point) == 3) {
+					nextGen.add(point);
+				}
 			});
 		});
 
