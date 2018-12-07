@@ -84,9 +84,15 @@ public class GoLTest {
 		Set<Point> nextGen = new HashSet<Point>();
 
 		IntStream yr = IntStream.range(0, height);
-		Stream<Stream<Point>> mapToObj = yr.mapToObj(y->IntStream.range(0, height).mapToObj(x->new Point(x, y)));
+		Stream<Stream<Point>> mapToObj = yr.mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y)));
 		Stream<Point> points = mapToObj.flatMap(identity());
-		
+		points.filter(point -> {
+			boolean alife = isLifeAt(x, y);
+			if (alife && alifeNeighbours(point) == 3) {
+				nextGen.add(point);
+			}
+		});
+
 		IntStream.range(0, height).forEach(y -> {
 			IntStream.range(0, height).forEach(x -> {
 				Point point = new Point(x, y);
