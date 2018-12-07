@@ -31,6 +31,7 @@ public class GoLTest {
 			return actual(board).equals(expected);
 		}
 
+		@Override
 		public void describeMismatch(Object item, Description mismatchDescription) {
 		}
 
