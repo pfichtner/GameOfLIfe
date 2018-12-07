@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
@@ -90,15 +91,15 @@ public class GoLTest {
 	}
 
 	private int alifeNeighbours(Point point) {
-		int count = 3;
+		AtomicInteger count = new AtomicInteger();
 		IntStream.range(point.y-1, point.y+2).forEach(y -> {
 			IntStream.range(point.x-1, point.x+2).forEach(x -> {
 				boolean lifeAt = isLifeAt(x, y);
 				if (lifeAt)
-					count++;
+					count.incrementAndGet();
 			});
 		});
-		return count;
+		return count.get();
 	}
 
 	private boolean isLifeAt(int x, int y) {
