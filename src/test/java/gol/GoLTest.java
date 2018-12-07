@@ -15,6 +15,13 @@ public class GoLTest {
 
 	private static class Point {
 
+		private int x,y;
+
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+
 	}
 
 	private boolean[] cells = new boolean[2];
@@ -48,6 +55,7 @@ public class GoLTest {
 
 	private void withLifeAt(int x, int y) {
 		this.cells[x] = true;
+		this.lifeCells.add(new Point(x,y));
 	}
 
 	private void aNewBoard(int width, int height) {
