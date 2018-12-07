@@ -19,8 +19,8 @@ public class GoLTest {
 
 	@Test
 	public void whereNoLifeIsSetThereIsNoLife() {
-		aNewBoard(1, 2);
-		withLifeAt(0, 1);
+		aNewBoard(2, 1);
+		withLifeAt(1, 0);
 		hasNoLifeAt(0, 0);
 	}
 
