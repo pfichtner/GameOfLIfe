@@ -17,6 +17,28 @@ import org.junit.internal.matchers.TypeSafeMatcher;
 
 public class GoLTest {
 
+	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
+		private final String expected;
+
+		private BoardMatcher(String expected) {
+			this.expected = expected;
+		}
+
+		@Override
+		public void describeTo(Description description) {
+			description.appendText(expected);
+		}
+
+		@Override
+		public boolean matchesSafely(Board board) {
+			return actual(board).equals(expected);
+		}
+
+		private String actual(Board board) {
+			return range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+		}
+	}
+
 	private Board board;
 
 	@Test
@@ -82,23 +104,7 @@ public class GoLTest {
 
 	private TypeSafeMatcher<Board> board(String... rows) {
 		String expected = Stream.of(rows).collect(joining("\n"));
-		return new TypeSafeMatcher<Board>() {
-
-			@Override
-			public void describeTo(Description description) {
-				description.appendText(expected);
-			}
-
-			@Override
-			public boolean matchesSafely(Board board) {
-				return actual(board).equals(expected);
-			}
-
-			private String actual(Board board) {
-				return range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
-			}
-
-		};
+		return new BoardMatcher(expected);
 	}
 
 	private String row(int y) {
