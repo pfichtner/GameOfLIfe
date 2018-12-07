@@ -23,6 +23,12 @@ public class GoLTest {
 		public int hashCode() {
 			return 31 * x + y;
 		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			Point other = (Point) obj;
+			return other.x == x && other.y == y;
+		}
 
 	}
 
