@@ -1,18 +1,11 @@
 package gol;
 
-import static java.util.function.Function.identity;
-import static java.util.function.Predicate.isEqual;
-import static java.util.stream.Collectors.toSet;
-import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.HashSet;
-import java.util.stream.IntStream;
+import java.awt.Point;
 
 import org.junit.Test;
-
-import gol.GoLTest.Point;
 
 public class GoLTest {
 
