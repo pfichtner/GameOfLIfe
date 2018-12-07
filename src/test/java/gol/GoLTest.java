@@ -92,8 +92,7 @@ public class GoLTest {
 			}
 			return false;
 		});
-		Set<Point> nextGen = filter.collect(Collectors.toSet());
-		this.lifeCells = nextGen;
+		this.lifeCells = filter.collect(Collectors.toSet());
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
