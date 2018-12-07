@@ -8,11 +8,12 @@ import static org.junit.Assert.assertThat;
 import java.util.stream.Stream;
 
 import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
 public class GoLTest {
 
-	private static final class BoardMatcher extends org.hamcrest.TypeSafeMatcher<Board> {
+	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
 
 		private final String expected;
 
