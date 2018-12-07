@@ -2,6 +2,7 @@ package gol;
 
 import static java.util.function.Function.identity;
 import static java.util.function.Predicate.isEqual;
+import static java.util.stream.Collectors.toSet;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -84,7 +85,7 @@ public class GoLTest {
 	private void whenTicked() {
 		this.lifeCells = IntStream.range(0, height)
 				.mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y))).flatMap(identity())
-				.filter(this::alifeInNextGen).collect(Collectors.toSet());
+				.filter(this::alifeInNextGen).collect(toSet());
 	}
 
 	private boolean alifeInNextGen(Point point) {
