@@ -70,7 +70,9 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aBoard("XX");
+		aBoard("" //
+				+ "XX" //
+				+ "XX");
 		whenTicked();
 		assertThat(isLifeAt(0, 0), is(true));
 		assertThat(isLifeAt(0, 1), is(true));
