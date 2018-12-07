@@ -96,13 +96,17 @@ public class GoLTest {
 			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
 				Point point = new Point(x, y);
 				if (!thisPoint.equals(point)) {
-					boolean lifeAt = isLifeAt(x, y);
+					boolean lifeAt = isLifeAt(point);
 					if (lifeAt)
 						count.incrementAndGet();
 				}
 			});
 		});
 		return count.get();
+	}
+
+	private boolean isLifeAt(Point point) {
+		return isLifeAt(point.x, point.y);
 	}
 
 	private boolean isLifeAt(int x, int y) {
