@@ -7,6 +7,8 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class GoLTest {
+	
+	private boolean[] cells = new boolean[2];
 
 	@Test
 	public void canCreateBoardAndSetLife() {
