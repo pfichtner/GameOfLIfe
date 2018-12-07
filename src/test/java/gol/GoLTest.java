@@ -1,9 +1,12 @@
 package gol;
 
+import static java.util.function.Function.identity;
+import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.stream.IntStream;
+import java.awt.Point;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
@@ -55,8 +58,8 @@ public class GoLTest {
 
 	private TypeSafeMatcher<Board> board(String... rows) {
 
-		IntStream.range(0, board.getHeight())
-				.mapToObj(y -> IntStream.range(0, board.getWidth()).mapToObj(x -> new Point(x, y)));
+		Stream<Point> poStream = range(0, board.getHeight())
+				.mapToObj(y -> range(0, board.getHeight()).mapToObj(x -> new Point(x, y)).map(p->board.isLifeAt(p.getX(), p.getY()))).flatMap(identity());
 
 		// TODO Auto-generated method stub
 		return null;
