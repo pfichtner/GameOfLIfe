@@ -23,7 +23,7 @@ public class GoLTest {
 		public int hashCode() {
 			return 31 * x + y;
 		}
-		
+
 		@Override
 		public boolean equals(Object obj) {
 			Point other = (Point) obj;
@@ -61,13 +61,13 @@ public class GoLTest {
 		return this.lifeCells.contains(point(x, y));
 	}
 
-	private Point point(int x, int y) {
-		return new Point(x, y);
-	}
-
 	private void withLifeAt(int x, int y) {
 		this.cells[x] = true;
 		this.lifeCells.add(point(x, y));
+	}
+
+	private Point point(int x, int y) {
+		return new Point(x, y);
 	}
 
 	private void aNewBoard(int width, int height) {
