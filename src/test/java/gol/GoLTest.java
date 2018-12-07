@@ -45,11 +45,7 @@ public class GoLTest {
 	public void whereNoLifeIsSetThereIsNoLife() {
 		aNewBoard(2, 1);
 		withLifeAt(1, 0);
-		hasNoLifeAt(0, 0);
-	}
-
-	private void hasNoLifeAt(int x, int y) {
-		assertThat(isLifeAt(x, y), is(false));
+		assertThat(isLifeAt(0, 0), is(false));
 	}
 
 	private void hasLifeAt(int x, int y) {
