@@ -57,8 +57,7 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		// TODO Auto-generated method stub
-		
+		this.lifeCells = new HashSet<Point>();
 	}
 
 	private boolean isLifeAt(int x, int y) {
