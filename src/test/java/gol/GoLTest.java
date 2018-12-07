@@ -88,6 +88,8 @@ public class GoLTest {
 			public void describeTo(Description description) {
 				description.appendText(expected);
 			}
+			
+			
 
 			@Override
 			public boolean matchesSafely(Board board) {
