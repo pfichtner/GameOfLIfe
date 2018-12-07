@@ -76,14 +76,14 @@ public class Board {
 		return point.neighbours().filter(isEqual(point).negate()).filter(this::isAlive).count();
 	}
 
+	public boolean isAlive(int x, int y) {
+		return isAlive(point(x, y));
+	}
+
 	private boolean isAlive(Point point) {
 		return lifeCells.contains(point);
 	}
 
-	boolean isAlive(int x, int y) {
-		Point point = point(x, y);
-		return lifeCells.contains(point);
-	}
 
 	public void setAlive(int x, int y) {
 		lifeCells.add(point(x, y));
