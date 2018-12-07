@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -74,6 +75,14 @@ public class GoLTest {
 
 	private void whenTicked() {
 		Set<Point> nextGen = new HashSet<Point>();
+
+		IntStream.range(0, height).forEach(y -> {
+			IntStream.range(0, height).forEach(x -> {
+				Point point = new Point(x, y);
+				boolean alife = isLifeAt(x, y);
+			});
+		});
+
 		this.lifeCells = nextGen;
 	}
 
