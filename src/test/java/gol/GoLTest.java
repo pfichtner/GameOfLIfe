@@ -71,7 +71,7 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		HashSet<Point> nextGen = new HashSet<Point>();
+		Set<Point> nextGen = new HashSet<Point>();
 		this.lifeCells = nextGen;
 	}
 
