@@ -90,12 +90,12 @@ public class GoLTest {
 		this.lifeCells = nextGen;
 	}
 
-	private int alifeNeighbours(Point point) {
+	private int alifeNeighbours(Point thisPoint) {
 		AtomicInteger count = new AtomicInteger();
-		IntStream.range(point.y - 1, point.y + 2).forEach(y -> {
-			IntStream.range(point.x - 1, point.x + 2).forEach(x -> {
-				Point point2 = new Point(x, y);
-				if (!point.equals(point2)) {
+		IntStream.range(thisPoint.y - 1, thisPoint.y + 2).forEach(y -> {
+			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
+				Point point = new Point(x, y);
+				if (!thisPoint.equals(point)) {
 					boolean lifeAt = isLifeAt(x, y);
 					if (lifeAt)
 						count.incrementAndGet();
