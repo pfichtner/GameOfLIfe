@@ -52,6 +52,8 @@ public class GoLTest {
 		aNewBoard(1, 1);
 		withLifeAt(0, 0);
 		assertThat(isLifeAt(0, 0), is(true));
+		aBoard("X");
+		resultsIn("X"); //
 	}
 
 	@Test
