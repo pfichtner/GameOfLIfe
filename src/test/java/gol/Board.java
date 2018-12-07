@@ -1,7 +1,9 @@
 package gol;
 
 import static java.util.function.Function.identity;
+import static java.util.function.Predicate.isEqual;
 import static java.util.stream.Collectors.toSet;
+import static java.util.stream.IntStream.range;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -65,4 +67,17 @@ public class Board {
 				.filter(this::alifeInNextGen).collect(toSet()));
 
 	}
+	
+	private boolean alifeInNextGen(Point point) {
+		boolean alife = isLifeAt(point);
+		return alife && alifeNeighbours(point) == 3;
+	}
+
+	private long alifeNeighbours(Point thisPoint) {
+		return range(thisPoint.y - 1, thisPoint.y + 2)
+				.mapToObj(y -> range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
+				.flatMap(identity()).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
+	}
+
+
 }
