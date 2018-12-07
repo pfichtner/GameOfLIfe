@@ -55,9 +55,8 @@ public class Board {
 	}
 
 	public void tick() {
-		this.lifeCells = IntStream.range(0, getHeight())
-				.mapToObj(y -> IntStream.range(0, getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
-				.filter(this::alifeInNextGen).collect(toSet());
+		this.lifeCells = range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> new Point(x, y)))
+				.flatMap(identity()).filter(this::alifeInNextGen).collect(toSet());
 
 	}
 
