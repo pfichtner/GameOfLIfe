@@ -83,7 +83,7 @@ public class Board {
 		return isLifeAt(point.x, point.y);
 	}
 
-	private boolean isLifeAt(int x, int y) {
+	boolean isLifeAt(int x, int y) {
 		return getLifeCells().contains(point(x, y));
 	}
 
