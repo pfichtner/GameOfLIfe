@@ -66,7 +66,8 @@ public class GoLTest {
 	}
 
 	private Stream<String> rr(int y) {
-		return range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
+		Stream<String> s = range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
+		return s;
 	}
 
 	private void aBoard(String... rows) {
