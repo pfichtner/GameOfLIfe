@@ -63,7 +63,8 @@ public class Board {
 		boolean alife = isLifeAt(point);
 		long alifeNeighbours = alifeNeighbours(point);
 		boolean b1 = alife && (alifeNeighbours == 2 || alifeNeighbours == 3);
-		return b1;
+		boolean b2 = !alife && (alifeNeighbours == 3);
+		return b1 || b2;
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
