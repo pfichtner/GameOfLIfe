@@ -4,11 +4,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
+import gol.GoLTest.Point;
+
 public class GoLTest {
+
+	private static class Point {
+
+	}
 
 	private boolean[] cells = new boolean[2];
 	private Set<Point> lifeCells = new HashSet<Point>();
