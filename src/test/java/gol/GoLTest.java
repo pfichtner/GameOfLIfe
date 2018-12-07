@@ -16,8 +16,6 @@ import gol.GoLTest.Point;
 
 public class GoLTest {
 
-	
-
 	private Board board = new Board();
 
 	@Test
@@ -70,15 +68,7 @@ public class GoLTest {
 
 	private void whenTicked() {
 		board.tick();
-		
-	}
 
-	private boolean isLifeAt(Point point) {
-		return isLifeAt(point.x, point.y);
-	}
-
-	private boolean isLifeAt(int x, int y) {
-		return this.board.getLifeCells().contains(point(x, y));
 	}
 
 	private void withLifeAt(int x, int y) {

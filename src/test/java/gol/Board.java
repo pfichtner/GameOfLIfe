@@ -67,7 +67,7 @@ public class Board {
 				.filter(this::alifeInNextGen).collect(toSet()));
 
 	}
-	
+
 	private boolean alifeInNextGen(Point point) {
 		boolean alife = isLifeAt(point);
 		return alife && alifeNeighbours(point) == 3;
@@ -79,5 +79,12 @@ public class Board {
 				.flatMap(identity()).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
 	}
 
+	private boolean isLifeAt(Point point) {
+		return isLifeAt(point.x, point.y);
+	}
+
+	private boolean isLifeAt(int x, int y) {
+		return this.board.getLifeCells().contains(point(x, y));
+	}
 
 }
