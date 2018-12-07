@@ -19,6 +19,11 @@ public class GoLTest {
 			this.y = y;
 		}
 
+		@Override
+		public int hashCode() {
+			return 31 * x + y;
+		}
+
 	}
 
 	private boolean[] cells = new boolean[2];
