@@ -21,8 +21,7 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	private void withLifeAt(int i, int j) {
