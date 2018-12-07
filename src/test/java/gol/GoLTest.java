@@ -32,7 +32,6 @@ public class GoLTest {
 
 	}
 
-	private boolean[] cells = new boolean[2];
 	private Set<Point> lifeCells = new HashSet<Point>();
 
 	@Test
