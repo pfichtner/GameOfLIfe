@@ -81,7 +81,8 @@ public class Board {
 	}
 
 	boolean isAlive(int x, int y) {
-		return lifeCells.contains(point(x, y));
+		Point point = point(x, y);
+		return lifeCells.contains(point);
 	}
 
 	public void setAlive(int x, int y) {
