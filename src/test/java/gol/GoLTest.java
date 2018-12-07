@@ -8,10 +8,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
+
+import gol.GoLTest.Point;
 
 public class GoLTest {
 
@@ -37,9 +38,7 @@ public class GoLTest {
 
 	}
 
-	private Set<Point> lifeCells = new HashSet<Point>();
-	private int width;
-	private int height;
+	private Board board = new Board(new HashSet<Point>());
 
 	@Test
 	public void canCreateBoardAndSetLife() {
@@ -90,9 +89,9 @@ public class GoLTest {
 	}
 
 	private void whenTicked() {
-		this.lifeCells = IntStream.range(0, height)
-				.mapToObj(y -> IntStream.range(0, height).mapToObj(x -> new Point(x, y))).flatMap(identity())
-				.filter(this::alifeInNextGen).collect(toSet());
+		this.board.setLifeCells(IntStream.range(0, board.getHeight())
+				.mapToObj(y -> IntStream.range(0, board.getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
+				.filter(this::alifeInNextGen).collect(toSet()));
 	}
 
 	private boolean alifeInNextGen(Point point) {
@@ -111,11 +110,11 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int x, int y) {
-		return this.lifeCells.contains(point(x, y));
+		return this.board.getLifeCells().contains(point(x, y));
 	}
 
 	private void withLifeAt(int x, int y) {
-		this.lifeCells.add(point(x, y));
+		this.board.getLifeCells().add(point(x, y));
 	}
 
 	private Point point(int x, int y) {
@@ -123,8 +122,8 @@ public class GoLTest {
 	}
 
 	private void aNewBoard(int width, int height) {
-		this.width = width;
-		this.height = height;
+		this.board.setWidth(width);
+		this.board.setHeight(height);
 	}
 
 }
