@@ -1,17 +1,15 @@
 package gol;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import gol.GoLTest.Point;
 
 public class Board {
-	private Set<Point> lifeCells;
+
+	private Set<Point> lifeCells = new HashSet<Point>();
 	private int width;
 	private int height;
-
-	public Board(Set<Point> lifeCells) {
-		this.lifeCells = lifeCells;
-	}
 
 	public Set<Point> getLifeCells() {
 		return lifeCells;
