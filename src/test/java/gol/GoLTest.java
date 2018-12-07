@@ -90,8 +90,7 @@ public class GoLTest {
 	}
 
 	private int alifeNeighbours(Point point) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 	private boolean isLifeAt(int x, int y) {
