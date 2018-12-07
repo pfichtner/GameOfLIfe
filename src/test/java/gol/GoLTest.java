@@ -94,7 +94,7 @@ public class GoLTest {
 		AtomicInteger count = new AtomicInteger();
 
 		IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
-				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(y -> new Point(x, y)));
+				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)));
 
 		IntStream.range(thisPoint.y - 1, thisPoint.y + 2).forEach(y -> {
 			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
