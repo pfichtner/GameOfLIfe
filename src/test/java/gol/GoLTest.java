@@ -63,10 +63,6 @@ public class GoLTest {
 
 	@Test
 	public void afterTickThereIsNoLife() {
-		aNewBoard(1, 1);
-		withLifeAt(0, 0);
-		thatIsTicked();
-		assertThat(isLifeAt(0, 0), is(false));
 		aBoard("-");
 		thatIsTicked();
 		resultsIn("-"); //
