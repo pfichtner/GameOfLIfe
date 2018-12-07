@@ -90,6 +90,10 @@ public class GoLTest {
 				"--X" //
 		);
 		thatIsTicked();
+		resultsIn();
+	}
+
+	private void resultsIn() {
 		assertThat(board, is(board( //
 				"---", //
 				"-X-", //
