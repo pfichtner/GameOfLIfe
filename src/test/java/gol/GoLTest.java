@@ -92,23 +92,17 @@ public class GoLTest {
 		this.lifeCells = nextGen;
 	}
 
-	private int alifeNeighbours(Point thisPoint) {
+	private long alifeNeighbours(Point thisPoint) {
 		AtomicInteger count = new AtomicInteger();
 
 		Stream<Stream<Point>> mapToObj = IntStream.range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)));
 		Stream<Point> points = mapToObj.flatMap(Function.identity());
+		
+		Stream<Point> filter = points.filter(p -> !thisPoint.equals(point));
+		Stream<Point> filter2 = filter.filter(p->isLifeAt(p));
 
-		IntStream.range(thisPoint.y - 1, thisPoint.y + 2).forEach(y -> {
-			IntStream.range(thisPoint.x - 1, thisPoint.x + 2).forEach(x -> {
-				Point point = new Point(x, y);
-				if (!thisPoint.equals(point)) {
-					if (isLifeAt(point))
-						count.incrementAndGet();
-				}
-			});
-		});
-		return count.get();
+		return filter2.count();
 	}
 
 	private boolean isLifeAt(Point point) {
