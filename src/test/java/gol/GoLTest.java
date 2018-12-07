@@ -15,6 +15,13 @@ public class GoLTest {
 		hasLifeAt(0, 0);
 	}
 
+	@Test
+	public void whereNoLifeIsSetThereIsNoLife() {
+		aNewBoard(1, 2);
+		withLifeAt(0, 1);
+		hasLifeAt(0, 0);
+	}
+
 	private void hasLifeAt(int x, int y) {
 		assertThat(isLifeAt(x, y), is(true));
 	}
