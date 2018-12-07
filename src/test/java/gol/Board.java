@@ -77,7 +77,7 @@ public class Board {
 	}
 
 	private boolean isAlive(Point point) {
-		return isAlive(point.x, point.y);
+		return lifeCells.contains(point);
 	}
 
 	boolean isAlive(int x, int y) {
