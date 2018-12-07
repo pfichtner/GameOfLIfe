@@ -90,7 +90,15 @@ public class GoLTest {
 	}
 
 	private int alifeNeighbours(Point point) {
-		return 3;
+		int count = 3;
+		IntStream.range(point.y-1, point.y+2).forEach(y -> {
+			IntStream.range(point.x-1, point.x+2).forEach(x -> {
+				boolean lifeAt = isLifeAt(x, y);
+				if (lifeAt)
+					count++;
+			});
+		});
+		return count;
 	}
 
 	private boolean isLifeAt(int x, int y) {
