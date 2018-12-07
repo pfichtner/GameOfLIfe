@@ -7,6 +7,7 @@ import static java.util.stream.IntStream.range;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Board {
 
@@ -67,9 +68,13 @@ public class Board {
 	}
 
 	private long alifeNeighbours(Point thisPoint) {
+		return neighbours(thisPoint).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
+	}
+
+	private Stream<Point> neighbours(Point thisPoint) {
 		return range(thisPoint.y - 1, thisPoint.y + 2)
 				.mapToObj(y -> range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)))
-				.flatMap(identity()).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
+				.flatMap(identity());
 	}
 
 	private boolean isLifeAt(Point point) {
