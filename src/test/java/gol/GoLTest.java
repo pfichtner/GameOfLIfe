@@ -99,7 +99,7 @@ public class GoLTest {
 				.mapToObj(y -> IntStream.range(thisPoint.x - 1, thisPoint.x + 2).mapToObj(x -> new Point(x, y)));
 		Stream<Point> points = mapToObj.flatMap(Function.identity());
 		
-		Stream<Point> filter = points.filter(p -> !thisPoint.equals(point));
+		Stream<Point> filter = points.filter(p -> !thisPoint.equals(p));
 		Stream<Point> filter2 = filter.filter(p->isLifeAt(p));
 
 		return filter2.count();
