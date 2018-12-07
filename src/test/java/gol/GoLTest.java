@@ -94,7 +94,8 @@ public class GoLTest {
 		AtomicInteger count = new AtomicInteger();
 		IntStream.range(point.y - 1, point.y + 2).forEach(y -> {
 			IntStream.range(point.x - 1, point.x + 2).forEach(x -> {
-				if (point.x != x || point.y != y) {
+				Point point2 = new Point(x, y);
+				if (!point.equals(point2)) {
 					boolean lifeAt = isLifeAt(x, y);
 					if (lifeAt)
 						count.incrementAndGet();
