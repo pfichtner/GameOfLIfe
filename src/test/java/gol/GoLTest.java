@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.junit.internal.matchers.TypeSafeMatcher;
 
 public class GoLTest {
 
@@ -48,6 +49,11 @@ public class GoLTest {
 		assertThat(isLifeAt(0, 1), is(true));
 		assertThat(isLifeAt(1, 0), is(true));
 		assertThat(isLifeAt(1, 1), is(true));
+	}
+
+	private TypeSafeMatcher<Board> board(String... rows) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private void aBoard(String... rows) {
