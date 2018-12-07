@@ -70,7 +70,7 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aBoard(
+		aBoard("" //
 				+ "XX" //
 				+ "XX" //
 		);
