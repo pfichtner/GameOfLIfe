@@ -38,7 +38,7 @@ public class GoLTest {
 	public void canCreateBoardAndSetLife() {
 		aNewBoard(1, 1);
 		withLifeAt(0, 0);
-		hasLifeAt(0, 0);
+		assertThat(isLifeAt(0, 0), is(true));
 	}
 
 	@Test
@@ -46,10 +46,6 @@ public class GoLTest {
 		aNewBoard(2, 1);
 		withLifeAt(1, 0);
 		assertThat(isLifeAt(0, 0), is(false));
-	}
-
-	private void hasLifeAt(int x, int y) {
-		assertThat(isLifeAt(x, y), is(true));
 	}
 
 	private boolean isLifeAt(int x, int y) {
