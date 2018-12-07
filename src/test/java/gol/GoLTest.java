@@ -20,8 +20,8 @@ public class GoLTest {
 	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
 		private final String expected;
 
-		private BoardMatcher(String expected) {
-			this.expected = expected;
+		private BoardMatcher(String[] rows) {
+			expected = Stream.of(rows).collect(joining("\n"));
 		}
 
 		@Override
@@ -103,8 +103,7 @@ public class GoLTest {
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
-		String expected = Stream.of(rows).collect(joining("\n"));
-		return new BoardMatcher(expected);
+		return new BoardMatcher(rows);
 	}
 
 	private String row(int y) {
