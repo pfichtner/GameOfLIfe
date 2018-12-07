@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class Board {
 
-	static class Point {
+	private static class Point {
 
 		private int x, y;
 
@@ -31,7 +31,7 @@ public class Board {
 			return other.x == x && other.y == y;
 		}
 
-		Stream<Point> neighbours(Board board) {
+		Stream<Point> neighbours() {
 			return range(y - 1, y + 2)
 					.mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> new Point(x, y)))
 					.flatMap(identity());
@@ -73,8 +73,8 @@ public class Board {
 				|| !alife && (alifeNeighbours == 3);
 	}
 
-	private long alifeNeighbours(Point thisPoint) {
-		return thisPoint.neighbours(this).filter(isEqual(thisPoint).negate()).filter(this::isLifeAt).count();
+	private long alifeNeighbours(Point point) {
+		return point.neighbours().filter(isEqual(point).negate()).filter(this::isLifeAt).count();
 	}
 
 	private boolean isLifeAt(Point point) {
