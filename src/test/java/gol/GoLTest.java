@@ -84,7 +84,8 @@ public class GoLTest {
 		Set<Point> nextGen = new HashSet<Point>();
 
 		IntStream yr = IntStream.range(0, height);
-		yr.mapToObj(y-IntStream.range(0, height));
+		Stream<Stream<Point>> mapToObj = yr.mapToObj(y->IntStream.range(0, height).mapToObj(x->new Point(x, y)));
+		Stream<Point> points = mapToObj.flatMap(identity());
 		
 		IntStream.range(0, height).forEach(y -> {
 			IntStream.range(0, height).forEach(x -> {
