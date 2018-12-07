@@ -30,7 +30,7 @@ public class GoLTest {
 		public boolean matchesSafely(Board board) {
 			return actual(board).equals(expected);
 		}
-		
+
 		@Override
 		protected void describeMismatchSafely(Board board, Description description) {
 			description.appendText("\n" + actual(board));
