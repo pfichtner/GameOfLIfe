@@ -39,7 +39,7 @@ public class Board {
 
 	public Board(int width, int height) {
 		this.setWidth(width);
-		this.setHeight(height);
+		this.height = height;
 	}
 
 	public Set<Point> getLifeCells() {
@@ -60,10 +60,6 @@ public class Board {
 
 	public int getHeight() {
 		return height;
-	}
-
-	private void setHeight(int height) {
-		this.height = height;
 	}
 
 	public void tick() {
