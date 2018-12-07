@@ -61,7 +61,7 @@ public class Board {
 
 	public void tick() {
 		setLifeCells(IntStream.range(0, getHeight())
-				.mapToObj(y -> IntStream.range(0, board.getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
+				.mapToObj(y -> IntStream.range(0, getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
 				.filter(this::alifeInNextGen).collect(toSet()));
 
 	}
