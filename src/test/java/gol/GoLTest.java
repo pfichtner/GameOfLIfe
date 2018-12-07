@@ -13,7 +13,6 @@ public class GoLTest {
 		aNewBoard(1, 1);
 		withLifeAt(0, 0);
 		hasLifeAt(0, 0);
-
 	}
 
 	private void hasLifeAt(int x, int y) {
