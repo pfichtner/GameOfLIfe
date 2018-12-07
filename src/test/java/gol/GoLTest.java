@@ -58,8 +58,8 @@ public class GoLTest {
 
 	private TypeSafeMatcher<Board> board(String... rows) {
 
-		Stream<Point> poStream = range(0, board.getHeight())
-				.mapToObj(y -> range(0, board.getHeight()).mapToObj(p -> board.isLifeAt(x, y) ? "X" : " "))
+		Stream<String> poStream = range(0, board.getHeight())
+				.mapToObj(y -> range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " "))
 				.flatMap(identity());
 
 		// TODO Auto-generated method stub
