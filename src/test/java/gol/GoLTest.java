@@ -32,7 +32,7 @@ public class GoLTest {
 		}
 
 		@Override
-		public void describeMismatch(Object item, Description mismatchDescription) {
+		public void describeMismatch(Description mismatchDescription) {
 		}
 
 		private String actual(Board board) {
