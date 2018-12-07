@@ -38,7 +38,7 @@ public class Board {
 	private int height;
 
 	public Board(int width, int height) {
-		this.setWidth(width);
+		this.width = width;
 		this.height = height;
 	}
 
@@ -52,10 +52,6 @@ public class Board {
 
 	public int getWidth() {
 		return width;
-	}
-
-	private void setWidth(int width) {
-		this.width = width;
 	}
 
 	public int getHeight() {
