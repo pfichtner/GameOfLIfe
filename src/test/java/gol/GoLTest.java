@@ -39,8 +39,7 @@ public class GoLTest {
 		}
 
 		private String row(Board board, int y) {
-			Stream<String> s = range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
-			return s.collect(Collectors.joining());
+			return range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ").collect(Collectors.joining());
 		}
 	}
 
