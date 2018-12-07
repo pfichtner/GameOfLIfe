@@ -100,7 +100,7 @@ public class GoLTest {
 		aBoard( //
 				"X-X", //
 				"---", //
-				"XX-" //
+				"-X-" //
 		);
 		thatIsTicked();
 		assertThat(board, is(board( //
