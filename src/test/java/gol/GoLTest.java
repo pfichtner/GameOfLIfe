@@ -85,8 +85,7 @@ public class GoLTest {
 		aNewBoard(2, 2);
 
 		for (int y = 0; y < rows.length; y++) {
-			String row = rows[y];
-			char[] charArray = row.toCharArray();
+			char[] charArray = rows[y].toCharArray();
 			for (int x = 0; x < charArray.length; x++) {
 				if (charArray[x] == 'X') {
 					withLifeAt(x, y);
