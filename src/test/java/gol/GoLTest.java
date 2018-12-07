@@ -85,15 +85,15 @@ public class GoLTest {
 	@Test
 	public void cellsWithTwoNeighboursWillSurvive() {
 		aBoard( //
-				"X  ", //
-				" X ", //
-				"  X" //
+				"X--", //
+				"-X-", //
+				"--X" //
 		);
 		whenTicked();
 		assertThat(board, is(board( //
-				"   ", //
-				" X ", //
-				"   " //
+				"---", //
+				"-X-", //
+				"---" //
 		)));
 	}
 
