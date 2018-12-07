@@ -37,7 +37,7 @@ public class GoLTest {
 	}
 
 	private void withLifeAt(int x, int y) {
-		// TODO Auto-generated method stub
+		this.cells[x] = true;
 
 	}
 
