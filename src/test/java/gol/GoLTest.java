@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import org.hamcrest.Description;
 import org.junit.Test;
-import org.junit.internal.matchers.TypeSafeMatcher;
 
 public class GoLTest {
 
