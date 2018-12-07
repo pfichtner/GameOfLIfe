@@ -88,8 +88,6 @@ public class GoLTest {
 			public void describeTo(Description description) {
 				description.appendText(expected);
 			}
-			
-			
 
 			@Override
 			public boolean matchesSafely(Board board) {
@@ -97,8 +95,7 @@ public class GoLTest {
 			}
 
 			private String actual(Board board) {
-				String actual = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
-				return actual;
+				return range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
 			}
 		};
 	}
