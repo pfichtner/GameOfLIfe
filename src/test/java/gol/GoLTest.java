@@ -1,14 +1,17 @@
 package gol;
 
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Point;
 import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.hamcrest.Description;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
@@ -58,16 +61,26 @@ public class GoLTest {
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
+		String poStream = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+		return new TypeSafeMatcher<Board>() {
 
-		Stream<String> poStream = range(0, board.getHeight()).mapToObj(y -> rr(y)).flatMap(identity());
+			@Override
+			public void describeTo(Description arg0) {
+				// TODO Auto-generated method stub
 
-		// TODO Auto-generated method stub
-		return null;
+			}
+
+			@Override
+			public boolean matchesSafely(Board item) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		};
 	}
 
-	private Stream<String> rr(int y) {
+	private String row(int y) {
 		Stream<String> s = range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
-		return s;
+		return s.collect(Collectors.joining());
 	}
 
 	private void aBoard(String... rows) {
