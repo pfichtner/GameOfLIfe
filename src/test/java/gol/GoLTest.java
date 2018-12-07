@@ -56,9 +56,8 @@ public class GoLTest {
 
 	@Test
 	public void whereNoLifeIsSetThereIsNoLife() {
-		aNewBoard(2, 1);
-		withLifeAt(1, 0);
-		assertThat(isLifeAt(0, 0), is(false));
+		aBoard("-X");
+		resultsIn("-X"); //
 	}
 
 	@Test
