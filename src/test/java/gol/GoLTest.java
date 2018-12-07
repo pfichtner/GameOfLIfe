@@ -83,11 +83,14 @@ public class GoLTest {
 
 	private void aBoard(String... rows) {
 		aNewBoard(2, 2);
-		
+
 		for (String row : rows) {
-			
+			char[] charArray = row.toCharArray();
+			for (int x = 0; x < charArray.length; x++) {
+
+			}
 		}
-		
+
 		withLifeAt(0, 0);
 		withLifeAt(0, 1);
 		withLifeAt(1, 0);
