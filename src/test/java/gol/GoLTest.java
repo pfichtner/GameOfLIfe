@@ -29,7 +29,7 @@ public class GoLTest {
 
 	}
 
-	private void aNewBoard(int i, int j) {
+	private void aNewBoard(int width, int height) {
 		// TODO Auto-generated method stub
 
 	}
