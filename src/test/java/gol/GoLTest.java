@@ -33,7 +33,7 @@ public class GoLTest {
 	}
 
 	private boolean isLifeAt(int x, int y) {
-		return true;
+		return this.cells[x];
 	}
 
 	private void withLifeAt(int x, int y) {
