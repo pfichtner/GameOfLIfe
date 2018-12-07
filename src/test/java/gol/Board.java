@@ -37,6 +37,11 @@ public class Board {
 	private int width;
 	private int height;
 
+	public Board(int width, int height) {
+		this.setWidth(width);
+		this.setHeight(height);
+	}
+
 	public Set<Point> getLifeCells() {
 		return lifeCells;
 	}
