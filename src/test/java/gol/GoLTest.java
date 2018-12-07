@@ -101,7 +101,7 @@ public class GoLTest {
 	public void newLifeIsBorn() {
 		aBoard( //
 				"XXX", //
-				"   " //
+				"---" //
 		);
 		whenTicked();
 		assertThat(board, is(board( //
