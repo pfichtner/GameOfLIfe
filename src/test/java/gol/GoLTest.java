@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class GoLTest {
 
-	private Board board ;
+	private Board board;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
@@ -38,6 +38,12 @@ public class GoLTest {
 				"XX" //
 		);
 		whenTicked();
+
+		assertThat(board, is(board( //
+				"XX", //
+				"XX" //
+		)));
+
 		assertThat(isLifeAt(0, 0), is(true));
 		assertThat(isLifeAt(0, 1), is(true));
 		assertThat(isLifeAt(1, 0), is(true));
@@ -71,7 +77,7 @@ public class GoLTest {
 	}
 
 	private void aNewBoard(int width, int height) {
-		this.board = new Board(width,height);
+		this.board = new Board(width, height);
 	}
 
 }
