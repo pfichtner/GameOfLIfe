@@ -46,10 +46,6 @@ public class Board {
 		return lifeCells;
 	}
 
-	private void setLifeCells(Set<Point> lifeCells) {
-		this.lifeCells = lifeCells;
-	}
-
 	public int getWidth() {
 		return width;
 	}
@@ -59,9 +55,9 @@ public class Board {
 	}
 
 	public void tick() {
-		setLifeCells(IntStream.range(0, getHeight())
-				.mapToObj(y -> IntStream.range(0, getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
-				.filter(this::alifeInNextGen).collect(toSet()));
+		this.lifeCells = IntStream.range(0, getHeight())
+		.mapToObj(y -> IntStream.range(0, getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
+		.filter(this::alifeInNextGen).collect(toSet());
 
 	}
 
