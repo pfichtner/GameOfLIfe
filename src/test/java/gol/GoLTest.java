@@ -93,8 +93,6 @@ public class GoLTest {
 			return false;
 		});
 		Set<Point> nextGen = filter.collect(Collectors.toSet());
-
-
 		this.lifeCells = nextGen;
 	}
 
