@@ -92,8 +92,13 @@ public class GoLTest {
 
 			@Override
 			public boolean matchesSafely(Board board) {
-				String actual = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+				String actual = actual(board);
 				return actual.equals(expected);
+			}
+
+			private String actual(Board board) {
+				String actual = range(0, board.getHeight()).mapToObj(y -> row(y)).collect(joining("\n"));
+				return actual;
 			}
 		};
 	}
