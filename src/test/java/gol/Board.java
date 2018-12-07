@@ -1,7 +1,11 @@
 package gol;
 
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toSet;
+
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Board {
 
@@ -53,5 +57,12 @@ public class Board {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public void tick() {
+		setLifeCells(IntStream.range(0, board.getHeight())
+				.mapToObj(y -> IntStream.range(0, board.getHeight()).mapToObj(x -> new Point(x, y))).flatMap(identity())
+				.filter(this::alifeInNextGen).collect(toSet()));
+
 	}
 }
