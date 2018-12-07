@@ -59,16 +59,18 @@ public class GoLTest {
 
 	private TypeSafeMatcher<Board> board(String... rows) {
 
-		Stream<String> poStream = range(0, board.getHeight())
-				.mapToObj(r())
-				.flatMap(identity());
+		Stream<String> poStream = range(0, board.getHeight()).mapToObj(r()).flatMap(identity());
 
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	private IntFunction<? extends Stream<String>> r() {
-		return y -> range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
+		return y -> rr(y);
+	}
+
+	private Stream<String> rr(int y) {
+		return range(0, board.getHeight()).mapToObj(x -> board.isLifeAt(x, y) ? "X" : " ");
 	}
 
 	private void aBoard(String... rows) {
