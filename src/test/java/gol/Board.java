@@ -60,7 +60,7 @@ public class Board {
 	}
 
 	private Stream<Point> cells() {
-		return range(0, getHeight()).mapToObj(y -> range(0, getWidth()).mapToObj(x -> point(x, y)))
+		return range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> point(x, y)))
 				.flatMap(identity());
 	}
 
