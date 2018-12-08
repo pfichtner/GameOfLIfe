@@ -56,14 +56,14 @@ public class GoLTest {
 	@Test
 	public void whereNoLifeIsSetThereIsNoLife() {
 		aBoard("-X");
-		resultsIn("-X"); //
+		resultsIn("-X");
 	}
 
 	@Test
 	public void afterTickThereIsNoLife() {
 		aBoard("X");
 		thatIsTicked();
-		resultsIn("-"); //
+		resultsIn("-");
 	}
 
 	@Test
@@ -86,13 +86,10 @@ public class GoLTest {
 				"--X" //
 		);
 		thatIsTicked();
-		resultsIn("---", //
+		resultsIn( //
+				"---", //
 				"-X-", //
 				"---");
-	}
-
-	private void resultsIn(String... rows) {
-		assertThat(board, is(new BoardMatcher(rows)));
 	}
 
 	@Test
@@ -108,6 +105,10 @@ public class GoLTest {
 				"-X-", //
 				"---" //
 		)));
+	}
+
+	private void resultsIn(String... rows) {
+		assertThat(board, is(new BoardMatcher(rows)));
 	}
 
 	private TypeSafeMatcher<Board> board(String... rows) {
@@ -127,21 +128,16 @@ public class GoLTest {
 
 	}
 
-	private boolean isLifeAt(int x, int y) {
-		return board.isAlive(x, y);
-	}
-
-	private void thatIsTicked() {
-		board.tick();
-
+	private void aNewBoard(int width, int height) {
+		this.board = new Board(width, height);
 	}
 
 	private void withLifeAt(int x, int y) {
 		this.board.setAlive(x, y);
 	}
 
-	private void aNewBoard(int width, int height) {
-		this.board = new Board(width, height);
+	private void thatIsTicked() {
+		board.tick();
 	}
 
 }
