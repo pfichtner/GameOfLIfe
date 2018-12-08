@@ -32,7 +32,7 @@ public class Board {
 		}
 
 		Stream<Point> neighbours() {
-			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> new Point(x, y)))
+			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> point(x, y)))
 					.flatMap(identity());
 		}
 
@@ -57,11 +57,10 @@ public class Board {
 
 	public void tick() {
 		this.lifeCells = cells().filter(this::alifeInNextGen).collect(toSet());
-
 	}
 
 	private Stream<Point> cells() {
-		return range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> new Point(x, y)))
+		return range(0, getHeight()).mapToObj(y -> range(0, getHeight()).mapToObj(x -> point(x, y)))
 				.flatMap(identity());
 	}
 
@@ -88,7 +87,7 @@ public class Board {
 		lifeCells.add(point(x, y));
 	}
 
-	private Point point(int x, int y) {
+	private static Point point(int x, int y) {
 		return new Point(x, y);
 	}
 
