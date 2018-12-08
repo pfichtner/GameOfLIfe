@@ -125,7 +125,6 @@ public class GoLTest {
 				}
 			}
 		}
-
 	}
 
 	private void aNewBoard(int width, int height) {
