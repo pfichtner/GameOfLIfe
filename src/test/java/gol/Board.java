@@ -39,8 +39,8 @@ public class Board {
 	}
 
 	private Set<Point> lifeCells = new HashSet<Point>();
-	private int width;
-	private int height;
+	private final int width;
+	private final int height;
 
 	public Board(int width, int height) {
 		this.width = width;
