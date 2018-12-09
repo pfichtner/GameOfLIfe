@@ -1,56 +1,22 @@
 package gol;
 
-import static java.util.stream.Collectors.joining;
+import static gol.BoardMatcher.boardOf;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
 public class GoLTest {
-
-	private static final class BoardMatcher extends TypeSafeMatcher<Board> {
-
-		private final String expected;
-
-		private BoardMatcher(String... rows) {
-			expected = Stream.of(rows).collect(joining("\n"));
-		}
-
-		@Override
-		public void describeTo(Description description) {
-			description.appendText("\n" + expected);
-		}
-
-		@Override
-		public boolean matchesSafely(Board board) {
-			return actual(board).equals(expected);
-		}
-
-		@Override
-		protected void describeMismatchSafely(Board board, Description description) {
-			description.appendText("\n" + actual(board));
-		}
-
-		private String actual(Board board) {
-			return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
-		}
-
-		private String row(Board board, int y) {
-			return range(0, board.getWidth()).mapToObj(x -> board.isAlive(x, y) ? "X" : "-").collect(joining());
-		}
-	}
 
 	private Board board;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
 		aBoard("X");
-		resultsIn("X"); //
+		resultsIn("X");
 	}
 
 	@Test
@@ -69,13 +35,15 @@ public class GoLTest {
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
 		aBoard( //
-				"XX", //
-				"XX" //
+				"-X-", //
+				"X-X", //
+				"-X-" //
 		);
 		thatIsTicked();
 		resultsIn( //
-				"XX", //
-				"XX"); //
+				"-X-", //
+				"X-X", //
+				"-X-");
 	}
 
 	@Test
@@ -108,23 +76,18 @@ public class GoLTest {
 	}
 
 	private void resultsIn(String... rows) {
-		assertThat(board, is(new BoardMatcher(rows)));
-	}
-
-	private TypeSafeMatcher<Board> board(String... rows) {
-		return new BoardMatcher(rows);
+		assertThat(board, is(boardOf(rows)));
 	}
 
 	private void aBoard(String... rows) {
 		aNewBoard(rows[0].length(), rows.length);
-		for (int y = 0; y < rows.length; y++) {
-			char[] charArray = rows[y].toCharArray();
-			for (int x = 0; x < charArray.length; x++) {
-				if (charArray[x] == 'X') {
-					withLifeAt(x, y);
-				}
-			}
-		}
+		range(0, rows.length).forEach(y -> setLifeInRow(rows, y));
+
+	}
+
+	private void setLifeInRow(String[] rows, int y) {
+		char[] charArray = rows[y].toCharArray();
+		IntStream.range(0, charArray.length).filter(x -> charArray[x] == 'X').forEach(x -> withLifeAt(x, y));
 	}
 
 	private void aNewBoard(int width, int height) {
