@@ -100,11 +100,11 @@ public class GoLTest {
 				"-X-" //
 		);
 		thatIsTicked();
-		assertThat(board, is(board( //
+		resultsIn( //
 				"---", //
 				"-X-", //
 				"---" //
-		)));
+		);
 	}
 
 	private void resultsIn(String... rows) {
