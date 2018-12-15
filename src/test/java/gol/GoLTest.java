@@ -35,15 +35,13 @@ public class GoLTest {
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
 		aBoard( //
-				"-X-", //
-				"X-X", //
-				"-X-" //
+				"XX", //
+				"XX" //
 		);
 		thatIsTicked();
 		resultsIn( //
-				"-X-", //
-				"X-X", //
-				"-X-");
+				"XX", //
+				"XX");
 	}
 
 	@Test
