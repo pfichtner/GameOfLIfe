@@ -32,8 +32,8 @@ public class Board {
 		}
 
 		Stream<Point> neighbours() {
-			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> point(x, y)))
-					.flatMap(identity());
+			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> point(x, y))).flatMap(identity())
+					.filter(isEqual(this).negate());
 		}
 
 	}
@@ -56,23 +56,22 @@ public class Board {
 	}
 
 	public void tick() {
-		this.lifeCells = cells().filter(this::alifeInNextGen).collect(toSet());
+		this.lifeCells = cells().filter(this::aliveInNextGen).collect(toSet());
 	}
 
 	private Stream<Point> cells() {
-		return range(0, getHeight()).mapToObj(y -> range(0, getWidth()).mapToObj(x -> point(x, y)))
-				.flatMap(identity());
+		return range(0, getHeight()).mapToObj(y -> range(0, getWidth()).mapToObj(x -> point(x, y))).flatMap(identity());
 	}
 
-	private boolean alifeInNextGen(Point point) {
-		boolean alife = isAlive(point);
-		long alifeNeighbours = alifeNeighbours(point);
-		return alife && (alifeNeighbours == 2 || alifeNeighbours == 3) //
-				|| !alife && (alifeNeighbours == 3);
+	private boolean aliveInNextGen(Point point) {
+		boolean alive = isAlive(point);
+		long aliveNeighbours = aliveNeighbours(point);
+		return alive && (aliveNeighbours == 2 || aliveNeighbours == 3) //
+				|| !alive && (aliveNeighbours == 3);
 	}
 
-	private long alifeNeighbours(Point point) {
-		return point.neighbours().filter(isEqual(point).negate()).filter(this::isAlive).count();
+	private long aliveNeighbours(Point point) {
+		return point.neighbours().filter(this::isAlive).count();
 	}
 
 	public boolean isAlive(int x, int y) {
