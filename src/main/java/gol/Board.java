@@ -4,6 +4,7 @@ import static java.util.function.Function.identity;
 import static java.util.function.Predicate.isEqual;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.IntStream.range;
+import static java.util.stream.IntStream.rangeClosed;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +33,7 @@ public class Board {
 		}
 
 		Stream<Point> neighbours() {
-			return range(y - 1, y + 2).mapToObj(y -> range(x - 1, x + 2).mapToObj(x -> point(x, y))).flatMap(identity())
+			return rangeClosed(y - 1, y + 1).mapToObj(y -> rangeClosed(x - 1, x + 1).mapToObj(x -> point(x, y))).flatMap(identity())
 					.filter(isEqual(this).negate());
 		}
 
