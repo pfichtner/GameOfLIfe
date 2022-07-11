@@ -12,26 +12,8 @@ import java.util.stream.Stream;
 
 public class Board {
 
-	private static class Point {
-
-		private final int x, y;
-
-		public Point(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-
-		@Override
-		public int hashCode() {
-			return 31 * x + y;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			Point other = (Point) obj;
-			return other.x == x && other.y == y;
-		}
-
+	private static record Point(int x, int y) {
+		
 		Stream<Point> neighbours() {
 			return rangeClosed(y - 1, y + 1).mapToObj(y -> rangeClosed(x - 1, x + 1).mapToObj(x -> point(x, y))).flatMap(identity())
 					.filter(isEqual(this).negate());
@@ -40,8 +22,7 @@ public class Board {
 	}
 
 	private Set<Point> lifeCells = new HashSet<Point>();
-	private final int width;
-	private final int height;
+	private final int width, height;
 
 	public Board(int width, int height) {
 		this.width = width;
