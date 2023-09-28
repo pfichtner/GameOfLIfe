@@ -67,10 +67,16 @@ public class Board {
 	}
 
 	private boolean aliveInNextGen(Coordinate coordinate) {
-		boolean alive = isAlive(coordinate);
 		long aliveNeighbours = aliveNeighbours(coordinate);
-		return alive && (aliveNeighbours == 2 || aliveNeighbours == 3) //
-				|| !alive && (aliveNeighbours == 3);
+		return isAlive(coordinate) ? !shouldDie(aliveNeighbours) : shouldBornNewLife(aliveNeighbours);
+	}
+
+	private static boolean shouldDie(long aliveNeighbours) {
+		return aliveNeighbours < 2 || aliveNeighbours > 3;
+	}
+
+	private static boolean shouldBornNewLife(long aliveNeighbours) {
+		return aliveNeighbours == 3;
 	}
 
 	private long aliveNeighbours(Coordinate coordinate) {
