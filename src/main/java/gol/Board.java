@@ -13,25 +13,7 @@ import java.util.stream.Stream;
 
 public class Board {
 
-	private static class Coordinate {
-
-		private final int x, y;
-
-		public Coordinate(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-
-		@Override
-		public int hashCode() {
-			return 31 * x + y;
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			Coordinate other = (Coordinate) obj;
-			return other.x == x && other.y == y;
-		}
+	private static record Coordinate(int x, int y) {
 
 		Stream<Coordinate> neighbours() {
 			return rangeClosed(y - 1, y + 1).mapToObj(y -> rangeClosed(x - 1, x + 1).mapToObj(x -> coordinate(x, y)))
