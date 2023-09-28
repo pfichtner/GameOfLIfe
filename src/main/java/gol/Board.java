@@ -11,74 +11,41 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class Board {
+public final class Board {
 
-	private static record Coordinate(int x, int y) {
-
+	public static record Coordinate(int x, int y) {
 		Stream<Coordinate> neighbours() {
-			return rangeClosed(y - 1, y + 1).mapToObj(y -> rangeClosed(x - 1, x + 1).mapToObj(x -> coordinate(x, y)))
-					.flatMap(identity()).filter(not(isEqual(this)));
+			return rangeClosed(y - 1, y + 1)
+					.mapToObj(y -> rangeClosed(x - 1, x + 1).mapToObj(x -> new Coordinate(x, y))).flatMap(identity())
+					.filter(not(isEqual(this)));
 		}
-
 	}
 
 	private Set<Coordinate> lifeCells = new HashSet<Coordinate>();
 
-	private final int width, height;
+	public final int width, height;
 
 	public Board(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
 
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
 	public void tick() {
-		this.lifeCells = cells().filter(this::aliveInNextGen).collect(toSet());
-	}
-
-	private Stream<Coordinate> cells() {
-		return range(0, getHeight()).mapToObj(y -> range(0, getWidth()).mapToObj(x -> coordinate(x, y)))
-				.flatMap(identity());
+		this.lifeCells = range(0, height).mapToObj(y -> range(0, width).mapToObj(x -> new Coordinate(x, y)))
+				.flatMap(identity()).filter(this::aliveInNextGen).collect(toSet());
 	}
 
 	private boolean aliveInNextGen(Coordinate coordinate) {
-		long aliveNeighbours = aliveNeighbours(coordinate);
-		return isAlive(coordinate) ? !shouldDie(aliveNeighbours) : shouldBornNewLife(aliveNeighbours);
+		long aliveNeighbours = coordinate.neighbours().filter(this::isAlive).count();
+		return aliveNeighbours == 3 || isAlive(coordinate) && aliveNeighbours == 2;
 	}
 
-	private static boolean shouldDie(long aliveNeighbours) {
-		return aliveNeighbours < 2 || aliveNeighbours > 3;
-	}
-
-	private static boolean shouldBornNewLife(long aliveNeighbours) {
-		return aliveNeighbours == 3;
-	}
-
-	private long aliveNeighbours(Coordinate coordinate) {
-		return coordinate.neighbours().filter(this::isAlive).count();
-	}
-
-	public boolean isAlive(int x, int y) {
-		return isAlive(coordinate(x, y));
-	}
-
-	private boolean isAlive(Coordinate coordinate) {
+	public boolean isAlive(Coordinate coordinate) {
 		return lifeCells.contains(coordinate);
 	}
 
-	public void setAlive(int x, int y) {
-		lifeCells.add(coordinate(x, y));
-	}
-
-	private static Coordinate coordinate(int x, int y) {
-		return new Coordinate(x, y);
+	public void setAlive(Coordinate coordinate) {
+		lifeCells.add(coordinate);
 	}
 
 }

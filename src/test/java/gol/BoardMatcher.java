@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
+import gol.Board.Coordinate;
+
 final class BoardMatcher extends TypeSafeMatcher<Board> {
 
 	private final String expected;
@@ -36,10 +38,10 @@ final class BoardMatcher extends TypeSafeMatcher<Board> {
 	}
 
 	private String actual(Board board) {
-		return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
+		return range(0, board.height).mapToObj(y -> row(board, y)).collect(joining("\n"));
 	}
 
 	private String row(Board board, int y) {
-		return range(0, board.getWidth()).mapToObj(x -> board.isAlive(x, y) ? "X" : "-").collect(joining());
+		return range(0, board.width).mapToObj(x -> board.isAlive(new Coordinate(x, y)) ? "X" : "-").collect(joining());
 	}
 }

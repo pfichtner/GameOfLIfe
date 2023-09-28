@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 
 import org.junit.Test;
 
+import gol.Board.Coordinate;
+
 public class GoLTest {
 
 	private Board board;
@@ -93,7 +95,8 @@ public class GoLTest {
 	}
 
 	private void withLifeAt(int x, int y) {
-		this.board.setAlive(x, y);
+		Board r = this.board;
+		r.setAlive(new Coordinate(x, y));
 	}
 
 	private void thatIsTicked() {
