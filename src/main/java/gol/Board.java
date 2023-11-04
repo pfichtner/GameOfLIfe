@@ -21,7 +21,7 @@ public final class Board {
 		}
 	}
 
-	private Set<Coordinate> lifeCells = new HashSet<Coordinate>();
+	private Set<Coordinate> lifeCells = new HashSet<>();
 
 	public final int width, height;
 
