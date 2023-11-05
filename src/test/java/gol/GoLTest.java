@@ -9,31 +9,31 @@ import java.util.stream.IntStream;
 
 import org.junit.Test;
 
-public class GoLTest {
+class GoLTest {
 
 	private BoardView boardView;
 
 	@Test
-	public void canCreateBoardAndSetLife() {
+	void canCreateBoardAndSetLife() {
 		aBoard("X");
 		resultsIn("X");
 	}
 
 	@Test
-	public void whereNoLifeIsSetThereIsNoLife() {
+	void whereNoLifeIsSetThereIsNoLife() {
 		aBoard("-X");
 		resultsIn("-X");
 	}
 
 	@Test
-	public void afterTickThereIsNoLife() {
+	void afterTickThereIsNoLife() {
 		aBoard("X");
 		thatIsTicked();
 		resultsIn("-");
 	}
 
 	@Test
-	public void cellsWithThreeNeighboursWillSurvive() {
+	void cellsWithThreeNeighboursWillSurvive() {
 		aBoard( //
 				"XX", //
 				"XX" //
@@ -45,7 +45,7 @@ public class GoLTest {
 	}
 
 	@Test
-	public void cellsWithTwoNeighboursWillSurvive() {
+	void cellsWithTwoNeighboursWillSurvive() {
 		aBoard( //
 				"X--", //
 				"-X-", //
@@ -59,7 +59,7 @@ public class GoLTest {
 	}
 
 	@Test
-	public void newLifeIsBorn() {
+	void newLifeIsBorn() {
 		aBoard( //
 				"X-X", //
 				"---", //
