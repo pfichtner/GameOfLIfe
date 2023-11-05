@@ -3,7 +3,7 @@ package gol;
 import static gol.BoardMatcher.boardOf;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.stream.IntStream;
 
@@ -94,8 +94,7 @@ public class GoLTest {
 	}
 
 	private void withLifeAt(int x, int y) {
-		Board r = this.board;
-		r.setAlive(new Coordinate(x, y));
+		this.board.setAlive(new Coordinate(x, y));
 	}
 
 	private void thatIsTicked() {
