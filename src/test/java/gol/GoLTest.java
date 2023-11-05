@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class GoLTest {
 
-	private Board board;
+	private BoardView boardView;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
@@ -74,7 +74,7 @@ public class GoLTest {
 	}
 
 	private void resultsIn(String... rows) {
-		assertThat(board, is(boardOf(rows)));
+		assertThat(boardView, is(boardOf(rows)));
 	}
 
 	private void aBoard(String... rows) {
@@ -89,15 +89,15 @@ public class GoLTest {
 	}
 
 	private void aNewBoard(int width, int height) {
-		this.board = new Board(width, height);
+		this.boardView = new BoardView(width, height, new Board());
 	}
 
 	private void withLifeAt(int x, int y) {
-		this.board.setAlive(x, y);
+		this.boardView.setAlive(x, y);
 	}
 
 	private void thatIsTicked() {
-		board.tick();
+		boardView.tick();
 	}
 
 }

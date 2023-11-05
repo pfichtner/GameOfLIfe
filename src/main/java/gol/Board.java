@@ -4,7 +4,6 @@ import static java.util.function.Function.identity;
 import static java.util.function.Predicate.isEqual;
 import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
-import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
 
 import java.util.HashSet;
@@ -24,28 +23,12 @@ public class Board {
 
 	private Set<Coordinate> lifeCells = new HashSet<>();
 
-	private final int width, height;
-
-	public Board(int width, int height) {
-		this.width = width;
-		this.height = height;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
 	public void tick() {
 		this.lifeCells = cells().filter(this::aliveInNextGen).collect(toSet());
 	}
 
 	private Stream<Coordinate> cells() {
-		return range(0, getHeight()).mapToObj(y -> range(0, getWidth()).mapToObj(x -> coordinate(x, y)))
-				.flatMap(identity());
+		return this.lifeCells.stream().map(Coordinate::neighbours).flatMap(identity()).distinct();
 	}
 
 	private boolean aliveInNextGen(Coordinate coordinate) {

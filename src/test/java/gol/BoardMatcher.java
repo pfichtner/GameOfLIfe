@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-final class BoardMatcher extends TypeSafeMatcher<Board> {
+final class BoardMatcher extends TypeSafeMatcher<BoardView> {
 
 	private final String expected;
 
@@ -26,20 +26,20 @@ final class BoardMatcher extends TypeSafeMatcher<Board> {
 	}
 
 	@Override
-	public boolean matchesSafely(Board board) {
+	public boolean matchesSafely(BoardView board) {
 		return actual(board).equals(expected);
 	}
 
 	@Override
-	protected void describeMismatchSafely(Board board, Description description) {
+	protected void describeMismatchSafely(BoardView board, Description description) {
 		description.appendText("\n" + actual(board));
 	}
 
-	private String actual(Board board) {
+	private String actual(BoardView board) {
 		return range(0, board.getHeight()).mapToObj(y -> row(board, y)).collect(joining("\n"));
 	}
 
-	private String row(Board board, int y) {
+	private String row(BoardView board, int y) {
 		return range(0, board.getWidth()).mapToObj(x -> board.isAlive(x, y) ? "X" : "-").collect(joining());
 	}
 }

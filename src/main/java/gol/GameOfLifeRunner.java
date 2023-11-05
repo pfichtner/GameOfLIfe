@@ -9,21 +9,21 @@ import java.util.concurrent.TimeUnit;
 public class GameOfLifeRunner {
 
 	public static void main(String[] args) throws InterruptedException {
-		Board board = init(new Board(120, 40));
+		BoardView boardView = init(new BoardView(120, 40, new Board()));
 		while (true) {
-			dumpBoard(board);
+			dumpBoard(boardView);
 			TimeUnit.MILLISECONDS.sleep(100);
-			board.tick();
+			boardView.tick();
 		}
 	}
 
-	private static void dumpBoard(Board board) {
+	private static void dumpBoard(BoardView board) {
 		System.out.print("\033[H\033[2J");
 		range(0, board.getHeight()).forEach(y -> System.out
 				.println(range(0, board.getWidth()).mapToObj(x -> board.isAlive(x, y) ? "*" : " ").collect(joining())));
 	}
 
-	private static Board init(Board board) {
+	private static BoardView init(BoardView board) {
 		Random random = new Random(System.currentTimeMillis());
 		range(0, board.getHeight()).forEach(y -> {
 			range(0, board.getWidth()).forEach(x -> {
