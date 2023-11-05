@@ -1,45 +1,70 @@
 package gol;
 
-import static gol.BoardMatcher.boardOf;
+import static gol.BoardMatcher.board;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.util.Arrays;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
 
 public class GoLTest {
 
+	@FunctionalInterface
+	public interface Processor<R, E extends Throwable> {
+
+		R process(StringTemplate stringTemplate) throws E;
+
+		static <T> Processor<T, RuntimeException> of(Function<? super StringTemplate, ? extends T> process) {
+			return process::apply;
+		}
+
+	}
+
+	StringTemplate.Processor<Board, RuntimeException> GOL = StringTemplate.Processor //
+			.of((StringTemplate template) -> {
+				String[] rows = template.interpolate().split("\n");
+				Board board = new Board(rows[0].length(), rows.length);
+				range(0, rows.length).forEach(y -> {
+					char[] charArray = rows[y].toCharArray();
+					IntStream.range(0, charArray.length).filter(x -> charArray[x] == 'X')
+							.forEach(x -> board.setAlive(x, y));
+				});
+				return board;
+			});
+
 	private Board board;
 
 	@Test
 	public void canCreateBoardAndSetLife() {
-		aBoard("X");
-		resultsIn("X");
+		aBoard(GOL."X");
+		resultsIn(GOL."X");
 	}
 
 	@Test
 	public void whereNoLifeIsSetThereIsNoLife() {
-		aBoard("-X");
-		resultsIn("-X");
+		aBoard(GOL."-X");
+		resultsIn(GOL."-X");
 	}
 
 	@Test
 	public void afterTickThereIsNoLife() {
-		aBoard("X");
+		aBoard(GOL."X");
 		thatIsTicked();
-		resultsIn("-");
+		resultsIn(GOL."-");
 	}
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aBoard("""
+		aBoard(GOL."""
 				XX
 				XX""" //
 		);
 		thatIsTicked();
-		resultsIn("""
+		resultsIn(GOL."""
 				XX
 				XX""" //
 		);
@@ -47,12 +72,12 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithTwoNeighboursWillSurvive() {
-		aBoard("""
+		aBoard(GOL."""
 				X--
 				-X-
 				--X""");
 		thatIsTicked();
-		resultsIn("""
+		resultsIn(GOL."""
 				---
 				-X-
 				---""" //
@@ -61,49 +86,25 @@ public class GoLTest {
 
 	@Test
 	public void newLifeIsBorn() {
-		aBoard("""
+		aBoard(GOL."""
 				X-X
 				---
 				-X-""" //
 		);
 		thatIsTicked();
-		resultsIn("""
+		resultsIn(GOL."""
 				---
 				-X-
 				---""" //
 		);
 	}
 
-	private void resultsIn(String textblock) {
-		resultsIn(textblock.split("\n"));
+	private void aBoard(Board board) {
+		this.board = board;
 	}
 
-	private void resultsIn(String... rows) {
-		assertThat(board, is(boardOf(rows)));
-	}
-
-	private void aBoard(String textblock) {
-		aBoard(textblock.split("\n"));
-
-	}
-
-	private void aBoard(String... rows) {
-		aNewBoard(rows[0].length(), rows.length);
-		range(0, rows.length).forEach(y -> setLifeInRow(rows, y));
-
-	}
-
-	private void setLifeInRow(String[] rows, int y) {
-		char[] charArray = rows[y].toCharArray();
-		IntStream.range(0, charArray.length).filter(x -> charArray[x] == 'X').forEach(x -> withLifeAt(x, y));
-	}
-
-	private void aNewBoard(int width, int height) {
-		this.board = new Board(width, height);
-	}
-
-	private void withLifeAt(int x, int y) {
-		this.board.setAlive(x, y);
+	private void resultsIn(Board board) {
+		assertThat(this.board, board(board));
 	}
 
 	private void thatIsTicked() {
