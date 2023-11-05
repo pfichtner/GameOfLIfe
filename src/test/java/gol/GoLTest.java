@@ -34,47 +34,57 @@ public class GoLTest {
 
 	@Test
 	public void cellsWithThreeNeighboursWillSurvive() {
-		aBoard( //
-				"XX", //
-				"XX" //
+		aBoard("""
+				XX
+				XX""" //
 		);
 		thatIsTicked();
-		resultsIn( //
-				"XX", //
-				"XX");
+		resultsIn("""
+				XX
+				XX""" //
+		);
 	}
 
 	@Test
 	public void cellsWithTwoNeighboursWillSurvive() {
-		aBoard( //
-				"X--", //
-				"-X-", //
-				"--X" //
-		);
+		aBoard("""
+				X--
+				-X-
+				--X""");
 		thatIsTicked();
-		resultsIn( //
-				"---", //
-				"-X-", //
-				"---");
+		resultsIn("""
+				---
+				-X-
+				---""" //
+		);
 	}
 
 	@Test
 	public void newLifeIsBorn() {
-		aBoard( //
-				"X-X", //
-				"---", //
-				"-X-" //
+		aBoard("""
+				X-X
+				---
+				-X-""" //
 		);
 		thatIsTicked();
-		resultsIn( //
-				"---", //
-				"-X-", //
-				"---" //
+		resultsIn("""
+				---
+				-X-
+				---""" //
 		);
+	}
+
+	private void resultsIn(String textblock) {
+		resultsIn(textblock.split("\n"));
 	}
 
 	private void resultsIn(String... rows) {
 		assertThat(board, is(boardOf(rows)));
+	}
+
+	private void aBoard(String textblock) {
+		aBoard(textblock.split("\n"));
+
 	}
 
 	private void aBoard(String... rows) {
