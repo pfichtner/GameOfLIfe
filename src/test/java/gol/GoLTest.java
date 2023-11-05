@@ -90,7 +90,6 @@ public class GoLTest {
 	private void aBoard(String... rows) {
 		aNewBoard(rows[0].length(), rows.length);
 		range(0, rows.length).forEach(y -> setLifeInRow(rows, y));
-
 	}
 
 	private void setLifeInRow(String[] rows, int y) {
